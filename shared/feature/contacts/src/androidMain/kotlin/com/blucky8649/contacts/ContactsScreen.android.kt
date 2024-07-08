@@ -5,8 +5,10 @@ import androidx.navigation.compose.composable
 
 const val ROUTE_CONTACTS = "contacts"
 
-fun NavGraphBuilder.contactsScreen() {
+fun NavGraphBuilder.contactsRoute(
+    onContactClick: (String) -> Unit
+) {
     composable(route = ROUTE_CONTACTS) {
-        ContactsScreen()
+        ContactsScreen(onContactClick = onContactClick)
     }
 }

@@ -34,6 +34,7 @@ android {
 
 dependencies {
     api(projects.shared.feature.contacts)
+    api(projects.shared.feature.contactdetails)
 
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.androidx.navigation.testing)

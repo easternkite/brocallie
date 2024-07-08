@@ -10,7 +10,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 @Composable
 fun ContactsScreen(
     modifier: Modifier = Modifier,
-    viewModel: ContactViewModel = viewModel { ContactViewModel() }
+    viewModel: ContactViewModel = viewModel { ContactViewModel() },
+    onContactClick: (String) -> Unit = {}
 ) {
     val uiState by viewModel.uiState.collectAsState()
 
@@ -21,6 +22,7 @@ fun ContactsScreen(
     ) {
         items(uiState.contacts) {
             ContactItem(name = it.name) {
+                onContactClick(it)
                 println("click $it")
             }
         }
