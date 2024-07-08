@@ -1,6 +1,5 @@
 package com.blucky8649.brocallie
 
-import com.android.build.gradle.internal.scope.ProjectInfo.Companion.getBaseName
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.jetbrains.compose.ComposePlugin
@@ -21,6 +20,9 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(compose.ui)
                 implementation(compose.components.resources)
                 implementation(compose.components.uiToolingPreview)
+
+                val viewModel = libs.findLibrary("kmp-viewmodel").get()
+                implementation(viewModel)
             }
         }
     }

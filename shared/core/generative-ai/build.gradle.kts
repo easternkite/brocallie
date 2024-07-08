@@ -21,9 +21,6 @@ kotlin {
         commonMain.dependencies {
             api(libs.generativeAi)
         }
-        commonTest.dependencies {
-            implementation(libs.kotlin.test)
-        }
     }
 }
 

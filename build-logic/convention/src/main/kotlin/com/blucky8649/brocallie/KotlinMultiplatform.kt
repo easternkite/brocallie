@@ -22,6 +22,13 @@ internal fun Project.configureKotlinMultiplatform() {
         iosSimulatorArm64()
 
         task("testClasses")
+
+        sourceSets.apply {
+            commonTest.dependencies {
+                val test = libs.findLibrary("kotlin-test").get()
+                implementation(test)
+            }
+        }
     }
 
     extensions.configure<LibraryExtension> {
