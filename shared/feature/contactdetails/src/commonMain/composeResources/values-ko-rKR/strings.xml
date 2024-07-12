@@ -1,0 +1,7 @@
+<resources>
+    <string name = "feature_contact_detail_title"> 주소록 상세 </string>
+    <string name = "feature_contact_detail_name"> 이름 </string>
+    <string name = "feature_contact_detail_nickname"> 별명 </string>
+    <string name = "feature_contact_detail_contact"> 연락처 </string>
+    <string name = "feature_contact_detail_save"> 저장 </string>
+</resources>

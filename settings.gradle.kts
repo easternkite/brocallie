@@ -23,3 +23,4 @@ include(":shared:feature:contactdetails")
 
 include(":shared:core:generative-ai")
 include(":shared:core:tts")
+include(":shared:core:designsystem")

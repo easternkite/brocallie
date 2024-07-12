@@ -2,7 +2,7 @@ import com.codingfeline.buildkonfig.compiler.FieldSpec.Type.STRING
 
 plugins {
     alias(libs.plugins.brocallie.kotlin.multiplatform.shared)
-    alias(libs.plugins.brocallie.compose.multiplatform.shared).apply(false)
+    alias(libs.plugins.brocallie.compose.multiplatform.shared)
 }
 
 kotlin {
@@ -22,6 +22,7 @@ kotlin {
     sourceSets {
         commonMain.dependencies {
             //put your multiplatform dependencies here
+            api(projects.shared.core.designsystem)
             api(projects.shared.feature.contacts)
             api(projects.shared.feature.contactdetails)
         }
