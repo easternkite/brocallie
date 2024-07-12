@@ -8,15 +8,14 @@ struct ContentView: View {
         NavigationStack {
             ContactScreen { name in
                 showContactDetails = true
-            }
+            }.ignoresSafeArea(.container)
             .navigationDestination(isPresented: $showContactDetails) {
                 ContactDetailScreen(
                     onBackPressed: { showContactDetails = false },
                     onSaveButtonClicked: {}
-                )
+                ).ignoresSafeArea(.container)
                 .navigationBarBackButtonHidden(true)
             }
-
         }
 	}
 }

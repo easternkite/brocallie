@@ -1,0 +1,7 @@
+<resources>
+    <string name = "feature_contact_detail_title"> Contact Detail </string>
+    <string name = "feature_contact_detail_name"> Name </string>
+    <string name = "feature_contact_detail_nickname"> Nickname </string>
+    <string name = "feature_contact_detail_contact"> Contact </string>
+    <string name = "feature_contact_detail_save"> Save </string>
+</resources>

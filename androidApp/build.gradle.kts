@@ -33,9 +33,11 @@ android {
 }
 
 dependencies {
+    api(projects.shared.core.designsystem)
     api(projects.shared.feature.contacts)
     api(projects.shared.feature.contactdetails)
 
+    implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
     testImplementation(libs.androidx.navigation.testing)
 }
