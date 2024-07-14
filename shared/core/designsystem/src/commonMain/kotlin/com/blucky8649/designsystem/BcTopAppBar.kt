@@ -20,7 +20,8 @@ fun BcTopAppBar(
     actionIcon: ImageVector? = null,
     actionIconContentDescription: String? = null,
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-        containerColor = MaterialTheme.colorScheme.primary
+        containerColor = MaterialTheme.colorScheme.primary,
+        titleContentColor = MaterialTheme.colorScheme.onPrimary
     ),
     onNavigationClick: () -> Unit,
     onActionClick: () -> Unit,

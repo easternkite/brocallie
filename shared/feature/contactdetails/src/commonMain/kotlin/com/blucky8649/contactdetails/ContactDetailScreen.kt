@@ -23,6 +23,7 @@ import brocallie.shared.feature.contactdetails.generated.resources.feature_conta
 import brocallie.shared.feature.contactdetails.generated.resources.feature_contact_detail_name
 import brocallie.shared.feature.contactdetails.generated.resources.feature_contact_detail_nickname
 import brocallie.shared.feature.contactdetails.generated.resources.feature_contact_detail_save
+import com.blucky8649.designsystem.BcText
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
@@ -46,26 +47,26 @@ fun ContactDetailScreen(
         OutlinedTextField(
             value = name,
             onValueChange = { name = it },
-            label = { Text(stringResource(Res.string.feature_contact_detail_name)) },
+            label = { BcText(stringResource(Res.string.feature_contact_detail_name)) },
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
             value = nickname,
             onValueChange = { nickname = it },
-            label = { Text(stringResource(Res.string.feature_contact_detail_nickname)) },
+            label = { BcText(stringResource(Res.string.feature_contact_detail_nickname)) },
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
             value = contact,
             onValueChange = { contact = it },
-            label = { Text(stringResource(Res.string.feature_contact_detail_contact)) },
+            label = { BcText(stringResource(Res.string.feature_contact_detail_contact)) },
             modifier = Modifier.fillMaxWidth()
         )
         Button(
             onClick = onSaveButtonClicked,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            Text(stringResource(Res.string.feature_contact_detail_save))
+            BcText(stringResource(Res.string.feature_contact_detail_save))
         }
     }
 }

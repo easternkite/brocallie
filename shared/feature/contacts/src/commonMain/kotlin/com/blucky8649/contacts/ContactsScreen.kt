@@ -20,7 +20,7 @@ fun ContactsScreen(
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background)
+            .background(MaterialTheme.colorScheme.surface)
             .then(modifier)
     ) {
         items(uiState.contacts) {
