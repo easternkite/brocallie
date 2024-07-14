@@ -21,18 +21,7 @@ fun BroCallieApp(
     modifier: Modifier = Modifier,
     appState: BcAppState = rememberBcAppState()
 ) {
-    MaterialTheme {
-        val systemUiController = rememberSystemUiController()
-        val appBarColor = MaterialTheme.colorScheme.primary // TopAppBar 컬러
-        val isDarkTheme = isSystemInDarkTheme()
-
-        LaunchedEffect(key1 = isDarkTheme) {
-            systemUiController.setStatusBarColor(
-                color = appBarColor,
-                darkIcons = isDarkTheme // 밝은 아이콘 사용 여부
-            )
-        }
-
+    MyApplicationTheme {
         Scaffold(
             modifier = modifier,
             containerColor = Color.Transparent
