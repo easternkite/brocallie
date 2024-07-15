@@ -1,3 +1,4 @@
 <resources>
+    <string name="app_name">Brocallie</string>
     <string name="title_feature">Feature</string>
 </resources>

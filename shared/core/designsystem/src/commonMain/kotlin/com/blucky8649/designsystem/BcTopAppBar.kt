@@ -21,7 +21,9 @@ fun BcTopAppBar(
     actionIconContentDescription: String? = null,
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(
         containerColor = MaterialTheme.colorScheme.primary,
-        titleContentColor = MaterialTheme.colorScheme.onPrimary
+        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+        actionIconContentColor = MaterialTheme.colorScheme.onPrimary
     ),
     onNavigationClick: () -> Unit,
     onActionClick: () -> Unit,
@@ -34,7 +36,7 @@ fun BcTopAppBar(
                 Icon(
                     imageVector = navigationIcon,
                     contentDescription = navigationIconContentDescription,
-                    tint = MaterialTheme.colorScheme.onSurface,
+                    tint = colors.navigationIconContentColor,
                 )
             }
         },
@@ -44,7 +46,7 @@ fun BcTopAppBar(
                 Icon(
                     imageVector = actionIcon,
                     contentDescription = actionIconContentDescription,
-                    tint = MaterialTheme.colorScheme.onSurface
+                    tint = colors.actionIconContentColor
                 )
             }
         },

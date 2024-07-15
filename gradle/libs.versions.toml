@@ -20,7 +20,7 @@ generative-ai = "0.5.0-1.0.0"
 buildKonfig = "0.15.1"
 kmpViewModel = "2.8.0"
 jetbrainsKotlinJvm = "2.0.0"
-navigation = "2.7.7"
+navigation = "2.8.0-beta05"
 
 
 androidxComposeBom = "2024.06.00"
