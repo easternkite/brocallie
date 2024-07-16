@@ -80,3 +80,4 @@ jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrai
 brocallie-android-application-compose = { id = "brocallie.android.application.compose", version = "unspecified" }
 brocallie-compose-multiplatform-shared = { id = "brocallie.compose.multiplatform.shared", version = "unspecified" }
 brocallie-kotlin-multiplatform-shared = { id = "brocallie.kotlin.multiplatform.shared", version = "unspecified" }
+brocallie-core-designsystem = { id = "brocallie.core.designsystem", version = "unspecified" }
