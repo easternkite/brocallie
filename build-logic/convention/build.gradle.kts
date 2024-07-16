@@ -39,6 +39,10 @@ gradlePlugin {
             id = "brocallie.kotlin.multiplatform.shared"
             implementationClass = "KotlinMultiplatformSharedConventionPlugin"
         }
+        create("brocallie.core.designsystem") {
+            id = "brocallie.core.designsystem"
+            implementationClass = "BrocallieDesignSystemPlugin"
+        }
     }
 }
 
