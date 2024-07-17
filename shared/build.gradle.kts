@@ -17,6 +17,7 @@ kotlin {
             isStatic = true
             export(projects.shared.feature.contacts)
             export(projects.shared.feature.contactdetails)
+            export(projects.shared.feature.conversation)
         }
     }
 
@@ -25,6 +26,7 @@ kotlin {
             //put your multiplatform dependencies here
             api(projects.shared.feature.contacts)
             api(projects.shared.feature.contactdetails)
+            api(projects.shared.feature.conversation)
         }
     }
 }

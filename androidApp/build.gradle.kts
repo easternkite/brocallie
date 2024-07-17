@@ -36,6 +36,7 @@ dependencies {
     api(projects.shared.core.designsystem)
     api(projects.shared.feature.contacts)
     api(projects.shared.feature.contactdetails)
+    api(projects.shared.feature.conversation)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
