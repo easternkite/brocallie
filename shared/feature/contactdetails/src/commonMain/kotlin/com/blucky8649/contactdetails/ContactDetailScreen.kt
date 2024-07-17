@@ -66,7 +66,10 @@ fun ContactDetailScreen(
             onClick = onSaveButtonClicked,
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
-            BcText(stringResource(Res.string.feature_contact_detail_save))
+            BcText(
+                stringResource(Res.string.feature_contact_detail_save),
+                color = MaterialTheme.colorScheme.onPrimary
+            )
         }
     }
 }
