@@ -13,6 +13,8 @@ internal fun Project.configureComposeMultiplatform() {
             androidMain.dependencies {
                 val navigationCompose = libs.findLibrary("androidx-navigation-compose").get()
                 implementation(navigationCompose.get())
+                val ktorAndroid = libs.findLibrary("ktor-client-android").get()
+                implementation(ktorAndroid.get())
             }
             commonMain.dependencies {
                 val compose = ComposePlugin.Dependencies(this@configureComposeMultiplatform)
@@ -25,6 +27,16 @@ internal fun Project.configureComposeMultiplatform() {
 
                 val viewModel = libs.findLibrary("kmp-viewmodel").get()
                 implementation(viewModel)
+
+                val coilCore = libs.findLibrary("coil-core").get()
+                implementation(coilCore)
+                val coilKtor = libs.findLibrary("coil-ktor").get()
+                implementation(coilKtor)
+                val coilCompose = libs.findLibrary("coil-compose").get()
+                implementation(coilCompose)
+                val coilComposeCore = libs.findLibrary("coil-compose-core").get()
+                implementation(coilComposeCore)
+
             }
         }
     }
