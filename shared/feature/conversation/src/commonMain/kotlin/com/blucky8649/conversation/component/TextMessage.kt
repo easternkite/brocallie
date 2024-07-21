@@ -1,4 +1,4 @@
-package com.blucky8649.conversation
+package com.blucky8649.conversation.component
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -12,25 +12,27 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.blucky8649.conversation.AUTHOR_KIM
+import com.blucky8649.conversation.AUTHOR_LEE
+import com.blucky8649.conversation.Author
 import com.blucky8649.designsystem.BcText
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
 fun TextMessage(
-    modifier: Modifier = Modifier,
-    authorName: String,
+    author: Author,
     message: String,
-    imageUrl: String = "",
+    modifier: Modifier = Modifier,
     isUserMe: Boolean = false,
     isAuthorRepeated: Boolean,
-    onImageClick: () -> Unit
+    onImageClick: (id: String) -> Unit
 ) {
     val spaceBetween = if (isAuthorRepeated)
         Modifier else Modifier.padding(top = 8.dp)
     
     Row(modifier = spaceBetween.then(modifier)) {
         if (!isAuthorRepeated) {
-            ChatCircleImage(imageUrl = imageUrl, onClick = onImageClick)   
+            ChatCircleImage(author = author, onClick = onImageClick)
         } else {
             Spacer(modifier = Modifier.width(74.dp))
         }
@@ -40,7 +42,7 @@ fun TextMessage(
                 .weight(1f),
         ) {
             if (!isAuthorRepeated) {
-                AuthorName(authorName)
+                AuthorName(author.name)
             } else {
                 Spacer(modifier = Modifier.height(4.dp))
             }
@@ -66,10 +68,10 @@ private fun AuthorName(
 
 @Composable
 private fun ChatCircleImage(
+    author: Author,
+    onClick: (id: String) -> Unit,
     modifier: Modifier = Modifier,
-    imageUrl: String,
-    contentDescription: String = "",
-    onClick: () -> Unit
+    contentDescription: String = ""
 ) {
     val borderColor = MaterialTheme.colorScheme.tertiary
     AsyncImage(
@@ -79,9 +81,9 @@ private fun ChatCircleImage(
             .border(1.5.dp, borderColor, CircleShape)
             .border(3.dp, MaterialTheme.colorScheme.surface, CircleShape)
             .clip(CircleShape)
-            .clickable(onClick = onClick)
+            .clickable(onClick = { onClick(author.id) })
             .then(modifier),
-        model = imageUrl,
+        model = author.image,
         contentDescription = contentDescription,
         contentScale = ContentScale.Crop
     )
@@ -92,21 +94,21 @@ private fun ChatCircleImage(
 fun TextMessagePreview() {
     Column {
         TextMessage(
-            authorName = "Lee",
+            author = AUTHOR_LEE,
             message = "Hi, nice to meet you.",
             isUserMe = true,
             isAuthorRepeated = false,
         ) {}
         
         TextMessage(
-            authorName = "Lee",
+            author = AUTHOR_LEE,
             message = "How are you?",
             isUserMe = true,
             isAuthorRepeated = true,
         ) {}
         
         TextMessage(
-            authorName = "Kim",
+            author = AUTHOR_KIM,
             message = "Hi!",
             isUserMe = false,
             isAuthorRepeated = false,

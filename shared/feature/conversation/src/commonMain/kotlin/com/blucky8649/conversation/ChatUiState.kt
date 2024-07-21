@@ -11,8 +11,13 @@ data class ChatUiState(
 
 @Immutable
 data class Message(
-    val author: String = "",
+    val author: Author = Author(),
     val content: String = "",
     val timestamp: String = "",
-    val authorImage: String = ""
+)
+
+data class Author(
+    val id: String = "",
+    val name: String = "",
+    val image: String = ""
 )

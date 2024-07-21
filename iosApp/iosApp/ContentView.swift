@@ -10,10 +10,7 @@ struct ContentView: View {
                 showContactDetails = true
             }.ignoresSafeArea(.container)
             .navigationDestination(isPresented: $showContactDetails) {
-                ContactDetailScreen(
-                    onBackPressed: { showContactDetails = false },
-                    onSaveButtonClicked: {}
-                ).ignoresSafeArea(.container)
+                ChatScreen(title: "Chat", onBackPressed: { showContactDetails = false }, onImageClicked: {it in it }).ignoresSafeArea(.container)
                 .navigationBarBackButtonHidden(true)
             }
         }
