@@ -15,21 +15,23 @@ import org.jetbrains.compose.ui.tooling.preview.Preview
 fun BcTopAppBar(
     modifier: Modifier = Modifier,
     title: String,
-    navigationIcon: ImageVector? = null,
-    navigationIconContentDescription: String? = null,
-    actionIcon: ImageVector? = null,
-    actionIconContentDescription: String? = null,
     colors: TopAppBarColors = TopAppBarDefaults.centerAlignedTopAppBarColors(
         containerColor = MaterialTheme.colorScheme.primary,
         titleContentColor = MaterialTheme.colorScheme.onPrimary,
         navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
         actionIconContentColor = MaterialTheme.colorScheme.onPrimary
     ),
-    onNavigationClick: () -> Unit,
-    onActionClick: () -> Unit,
+    scrollBehavior: TopAppBarScrollBehavior? = null,
+    navigationIcon: ImageVector? = null,
+    navigationIconContentDescription: String? = null,
+    actionIcon: ImageVector? = null,
+    actionIconContentDescription: String? = null,
+    onNavigationClick: () -> Unit = {},
+    onActionClick: () -> Unit = {},
 ) {
     CenterAlignedTopAppBar(
         title = { Text(text = title) },
+        scrollBehavior = scrollBehavior,
         navigationIcon = {
             navigationIcon ?: return@CenterAlignedTopAppBar
             IconButton(onClick = onNavigationClick) {

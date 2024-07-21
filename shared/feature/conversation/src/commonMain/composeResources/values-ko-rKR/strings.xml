@@ -1,0 +1,4 @@
+<resources>
+    <string name = "textfield_hint"> AI에게 메세지를 보내보세요. </string>
+    <string name = "send"> 전송 </string>
+</resources>

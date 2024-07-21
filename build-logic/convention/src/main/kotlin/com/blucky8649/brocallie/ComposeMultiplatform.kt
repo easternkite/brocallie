@@ -15,7 +15,14 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(navigationCompose.get())
                 val ktorAndroid = libs.findLibrary("ktor-client-android").get()
                 implementation(ktorAndroid.get())
+                val bom = libs.findLibrary("androidx-compose-bom").get()
+                implementation(project.dependencies.platform(bom))
+                val uiToolingPreview = libs.findLibrary("compose-ui-tooling-preview").get()
+                implementation(uiToolingPreview)
+                val uiTooling = libs.findLibrary("compose-ui-tooling").get()
+                implementation(uiTooling)
             }
+
             commonMain.dependencies {
                 val compose = ComposePlugin.Dependencies(this@configureComposeMultiplatform)
                 implementation(compose.runtime)

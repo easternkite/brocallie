@@ -13,6 +13,7 @@
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
 		7555FF83242A565900829871 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7555FF82242A565900829871 /* ContentView.swift */; };
 		94E084ABA23C55174B082E99 /* ContactScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E085DE71F23A756CAE804B /* ContactScreen.swift */; };
+		94E0896F15ED1A6799350E17 /* ChatScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0863FEB2A231A4ACD7A5A /* ChatScreen.swift */; };
 		94E08CDA24714A01FF1527F8 /* ContactDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94E0809CB3F14829F7168C41 /* ContactDetailScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		94E0809CB3F14829F7168C41 /* ContactDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactDetailScreen.swift; sourceTree = "<group>"; };
 		94E085DE71F23A756CAE804B /* ContactScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactScreen.swift; sourceTree = "<group>"; };
+		94E0863FEB2A231A4ACD7A5A /* ChatScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 			children = (
 				94E085DE71F23A756CAE804B /* ContactScreen.swift */,
 				94E0809CB3F14829F7168C41 /* ContactDetailScreen.swift */,
+				94E0863FEB2A231A4ACD7A5A /* ChatScreen.swift */,
 			);
 			path = contact;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
 				94E084ABA23C55174B082E99 /* ContactScreen.swift in Sources */,
 				94E08CDA24714A01FF1527F8 /* ContactDetailScreen.swift in Sources */,
+				94E0896F15ED1A6799350E17 /* ChatScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

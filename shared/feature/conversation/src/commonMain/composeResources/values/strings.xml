@@ -1,0 +1,4 @@
+<resources>
+    <string name = "textfield_hint"> Send a message to AI </string>
+    <string name = "send"> Send </string>
+</resources>
