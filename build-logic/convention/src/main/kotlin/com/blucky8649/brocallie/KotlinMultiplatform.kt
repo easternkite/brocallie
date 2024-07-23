@@ -24,6 +24,11 @@ internal fun Project.configureKotlinMultiplatform() {
         task("testClasses")
 
         sourceSets.apply {
+            commonMain.dependencies {
+                val datetime = libs.findLibrary("kotlinx-datetime").get()
+                implementation(datetime)
+            }
+
             commonTest.dependencies {
                 val test = libs.findLibrary("kotlin-test").get()
                 implementation(test)

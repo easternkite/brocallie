@@ -32,6 +32,7 @@ import com.blucky8649.conversation.component.TextMessage
 import com.blucky8649.conversation.component.UserInputField
 import com.blucky8649.designsystem.BcTopAppBar
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 const val ConversationTestTag = "ConversationTestTag"
@@ -70,7 +71,7 @@ fun ChatScreen(
         },
         bottomBar = {
             UserInputField(
-                onMessageSent = { viewModel.sendMessage(Message(AUTHOR_LEE, it, "")) },
+                onMessageSent = { viewModel.sendMessage(Message(AUTHOR_LEE, it, Clock.System.now().toEpochMilliseconds().toString())) },
                 resetScroll = { scope.launch { scrollState.animateScrollToItem(0) } },
                 modifier = Modifier.navigationBarsPadding().imePadding()
             )
