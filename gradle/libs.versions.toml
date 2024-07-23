@@ -22,6 +22,7 @@ kmpViewModel = "2.8.0"
 jetbrainsKotlinJvm = "2.0.0"
 navigation = "2.8.0-beta05"
 coil = "3.0.0-alpha08"
+datetime = "0.6.0"
 
 
 androidxComposeBom = "2024.06.00"
@@ -31,6 +32,8 @@ accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-
 google-cloud-texttospeech = { module = "com.google.cloud:google-cloud-texttospeech", version.ref = "googleCloudTexttospeech" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
+
+kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime"}
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }

@@ -3,11 +3,11 @@ package com.blucky8649.conversation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.blucky8649.generative_ai.Gemini
-import dev.shreyaspatil.ai.client.generativeai.type.content
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
+import kotlinx.datetime.Clock
 
 class ChatViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(ChatUiState())
@@ -26,7 +26,11 @@ class ChatViewModel : ViewModel() {
             val response = kotlin.runCatching { chat.sendMessage(message.content) }
                 .getOrNull() ?: return@launch
             val newMessage = _uiState.value.messages.toMutableList()
-            val messageFromModel = Message(AUTHOR_KIM, response.text.toString().trim())
+            val messageFromModel = Message(
+                AUTHOR_KIM,
+                response.text.toString().trim(),
+                Clock.System.now().toEpochMilliseconds().toString()
+            )
             newMessage.add(0, messageFromModel)
             _uiState.update { it.copy(messages = newMessage) }
         }
