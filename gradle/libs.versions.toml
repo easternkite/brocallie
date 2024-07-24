@@ -24,6 +24,9 @@ navigation = "2.8.0-beta05"
 coil = "3.0.0-alpha08"
 datetime = "0.6.0"
 
+room = "2.7.0-alpha05"
+ksp = "2.0.0-1.0.23"
+
 
 androidxComposeBom = "2024.06.00"
 
@@ -51,6 +54,10 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+androidx-room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", version.ref = "room" }
 
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
@@ -86,8 +93,13 @@ android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "a
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
 
+
+
 # Convention Plugins
 brocallie-android-application-compose = { id = "brocallie.android.application.compose", version = "unspecified" }
 brocallie-compose-multiplatform-shared = { id = "brocallie.compose.multiplatform.shared", version = "unspecified" }
 brocallie-kotlin-multiplatform-shared = { id = "brocallie.kotlin.multiplatform.shared", version = "unspecified" }
 brocallie-core-designsystem = { id = "brocallie.core.designsystem", version = "unspecified" }
+
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }
