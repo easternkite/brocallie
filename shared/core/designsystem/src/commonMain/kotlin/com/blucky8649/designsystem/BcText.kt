@@ -20,6 +20,7 @@ fun BcText(
     text: String,
     modifier: Modifier = Modifier,
     color: Color = LocalContentColor.current,
+    fontWeight: FontWeight? = null,
     onTextLayout: ((TextLayoutResult) -> Unit)? = null,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
@@ -35,7 +36,7 @@ fun BcText(
         minLines = minLines,
         softWrap = softWrap,
         overflow = overflow,
-        style = style.copy(color = color)
+        style = style.copy(color = color, fontWeight = fontWeight)
     )
 }
 

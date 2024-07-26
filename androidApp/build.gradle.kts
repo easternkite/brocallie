@@ -37,6 +37,7 @@ dependencies {
     api(projects.shared.feature.contacts)
     api(projects.shared.feature.contactdetails)
     api(projects.shared.feature.conversation)
+    api(projects.shared.feature.createcallie)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
