@@ -43,7 +43,8 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(coilCompose)
                 val coilComposeCore = libs.findLibrary("coil-compose-core").get()
                 implementation(coilComposeCore)
-
+                val tablerIcon = libs.findLibrary("composeIcons-tablerIcons").get()
+                implementation(tablerIcon)
             }
         }
     }
