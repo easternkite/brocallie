@@ -26,6 +26,9 @@ datetime = "0.6.0"
 
 room = "2.7.0-alpha05"
 ksp = "2.0.0-1.0.23"
+peekaboo = "0.5.2"
+
+composeIcons = "1.1.0"
 
 
 androidxComposeBom = "2024.06.00"
@@ -73,6 +76,10 @@ coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil" }
 
 generativeAi = { module = "dev.shreyaspatil.generativeai:generativeai-google", version.ref = "generative-ai" }
+
+composeIcons-tablerIcons = { module = "br.com.devsrsouza.compose.icons:tabler-icons", version.ref = "composeIcons" }
+peekaboo-ui = { module = "io.github.onseok:peekaboo-ui", version.ref = "peekaboo" }
+peekaboo-image-picker = { module = "io.github.onseok:peekaboo-image-picker", version.ref = "peekaboo" }
 
 # :build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }

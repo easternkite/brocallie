@@ -20,7 +20,7 @@ include(":androidApp")
 
 include(":shared:feature:contacts")
 include(":shared:feature:contactdetails")
-
+include(":shared:feature:createcallie")
 include(":shared:feature:conversation")
 
 include(":shared:core:generative-ai")
