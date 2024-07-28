@@ -1,4 +1,5 @@
 ## Project Brocallie
+> Currently focusing on Android development. iOS support is coming soon!
 
 The main function of this app is to enable conversational interactions with AI using Generative AI technology.
 
