@@ -17,6 +17,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -32,7 +33,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -41,13 +41,15 @@ import brocallie.shared.feature.createcallie.generated.resources.add_photo
 import brocallie.shared.feature.createcallie.generated.resources.photo_ai
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_content
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
+import coil3.compose.AsyncImage
 import com.blucky8649.designsystem.BcText
 import com.blucky8649.designsystem.BcTopAppBar
+import com.blucky8649.firebase.uploadImage
 import com.preat.peekaboo.image.picker.SelectionMode
 import com.preat.peekaboo.image.picker.rememberImagePickerLauncher
-import com.preat.peekaboo.image.picker.toImageBitmap
 import compose.icons.TablerIcons
 import compose.icons.tablericons.Check
+import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -92,62 +94,67 @@ fun CreateCallieScreen(
             }
         }
     ) { paddingValues: PaddingValues ->
-        var imageBitmap: ImageBitmap? by remember { mutableStateOf(null) }
+        var imageUrl: String? by remember { mutableStateOf(null) }
+        var isLoading: Boolean by remember { mutableStateOf(false) }
 
         val scope = rememberCoroutineScope()
         val picker = rememberImagePickerLauncher(
             selectionMode = SelectionMode.Single,
             scope = scope,
-            onResult = { imageBitmap = it.firstOrNull()?.toImageBitmap() }
+            onResult = {
+                isLoading = true
+                it.firstOrNull()?.uploadImage(
+                    "brocallie_${Clock.System.now().epochSeconds}"
+                ) { img -> imageUrl = img }
+            }
         )
 
-        val circleModifier = Modifier
-            .size(300.dp)
-            .clip(CircleShape)
-            .border(3.dp, MaterialTheme.colorScheme.primary, CircleShape)
-            .clickable { picker.launch() }
-
-        Column(
+        Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
                 .padding(10.dp)
-            ,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
-
         ) {
-            imageBitmap?.also {
-                Image(
-                    bitmap = it,
-                    contentDescription = "selected image",
-                    modifier = circleModifier,
-                    contentScale = ContentScale.Crop
+            val alignCenter = Modifier.align(Alignment.Center)
+            val circleModifier = Modifier
+                .size(300.dp)
+                .then(alignCenter)
+                .clip(CircleShape)
+                .clickable { picker.launch() }
+
+            Column(
+                modifier = circleModifier
+                    .background(MaterialTheme.colorScheme.primaryContainer)
+                    .padding(20.dp),
+                verticalArrangement = Arrangement.Center,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if (isLoading) return@Column
+                Icon(
+                    imageVector = vectorResource(Res.drawable.photo_ai),
+                    contentDescription = "add photo",
+                    tint = MaterialTheme.colorScheme.primary,
+                    modifier = Modifier
+                        .size(150.dp)
                 )
-            } ?: also {
-                Column(
-                    modifier = circleModifier
-                        .background(MaterialTheme.colorScheme.primaryContainer)
-                        .padding(20.dp),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Icon(
-                        imageVector = vectorResource(Res.drawable.photo_ai),
-                        contentDescription = "add photo",
-                        tint = MaterialTheme.colorScheme.primary,
-                        modifier = Modifier
-                            .size(150.dp)
-                    )
-                    Text(
-                        text = stringResource(Res.string.add_photo),
-                        color = MaterialTheme.colorScheme.primary,
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.titleMedium,
-                        modifier = Modifier.padding(5.dp)
-                    )
-                }
+                Text(
+                    text = stringResource(Res.string.add_photo),
+                    color = MaterialTheme.colorScheme.primary,
+                    fontWeight = FontWeight.Bold,
+                    style = MaterialTheme.typography.titleMedium,
+                    modifier = Modifier.padding(5.dp)
+                )
             }
+            imageUrl?.also {
+                AsyncImage(
+                    modifier = circleModifier,
+                    model = imageUrl,
+                    contentDescription = "selected image",
+                    contentScale = ContentScale.Crop,
+                    onSuccess = { isLoading = false }
+                )
+            }
+            if (isLoading) { CircularProgressIndicator(modifier = alignCenter) }
         }
     }
 }

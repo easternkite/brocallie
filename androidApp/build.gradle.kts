@@ -1,13 +1,14 @@
 plugins {
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.google.services)
     alias(libs.plugins.brocallie.android.application.compose).apply(true)
 }
 
 android {
-    namespace = "com.blucky8649.brocallie.android"
+    namespace = "com.blucky8649.brocallie"
     compileSdk = 34
     defaultConfig {
-        applicationId = "com.blucky8649.brocallie.android"
+        applicationId = "com.blucky8649.brocallie"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
@@ -38,6 +39,9 @@ dependencies {
     api(projects.shared.feature.contactdetails)
     api(projects.shared.feature.conversation)
     api(projects.shared.feature.createcallie)
+
+    implementation(platform(libs.firebase.bom))
+    implementation(libs.firebase.storage.ktx)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)

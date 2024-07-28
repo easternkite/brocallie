@@ -19,6 +19,7 @@ kotlin {
             export(projects.shared.feature.contactdetails)
             export(projects.shared.feature.conversation)
             export(projects.shared.feature.createcallie)
+            export(projects.shared.core.firebase)
         }
     }
 
@@ -29,6 +30,7 @@ kotlin {
             api(projects.shared.feature.contactdetails)
             api(projects.shared.feature.conversation)
             api(projects.shared.feature.createcallie)
+            api(projects.shared.core.firebase)
         }
     }
 }

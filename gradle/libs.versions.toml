@@ -2,6 +2,7 @@
 accompanistSystemuicontroller = "0.28.0"
 agp = "8.4.2"
 androidTools = "31.5.0"
+firebaseBom = "33.1.2"
 googleCloudTexttospeech = "2.0.1"
 kotlin = "2.0.0"
 compose = "1.5.4"
@@ -28,6 +29,8 @@ room = "2.7.0-alpha05"
 ksp = "2.0.0-1.0.23"
 peekaboo = "0.5.2"
 
+google-services = "4.4.2"
+
 composeIcons = "1.1.0"
 
 
@@ -35,6 +38,8 @@ androidxComposeBom = "2024.06.00"
 
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
+firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebaseBom" }
+firebase-storage-ktx = { module = "com.google.firebase:firebase-storage-ktx" }
 google-cloud-texttospeech = { module = "com.google.cloud:google-cloud-texttospeech", version.ref = "googleCloudTexttospeech" }
 kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test", version.ref = "kotlin" }
 androidx-activity-compose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activityCompose" }
@@ -99,6 +104,8 @@ kotlinCocoapods = { id = "org.jetbrains.kotlin.native.cocoapods", version.ref = 
 android-dynamic-feature = { id = "com.android.dynamic-feature", version.ref = "agp" }
 buildKonfig = { id = "com.codingfeline.buildkonfig", version.ref = "buildKonfig" }
 jetbrains-kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "jetbrainsKotlinJvm" }
+
+google-services = { id = "com.google.gms.google-services", version.ref = "google-services"}
 
 
 

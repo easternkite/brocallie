@@ -12,6 +12,7 @@ import com.blucky8649.contacts.contactsRoute
 import com.blucky8649.contactdetails.ROUTE_CONTACT_DETAIL
 import com.blucky8649.contactdetails.contanctDetailRoute
 import com.blucky8649.conversation.chatScreenRoute
+import com.blucky8649.createcallie.createCallieRoute
 
 @Composable
 fun BroCallieNavHost(
@@ -33,6 +34,10 @@ fun BroCallieNavHost(
         chatScreenRoute(
             onBackPressed = { appState.navController.navigateUp() },
             onImageClick = { /** TODO: Implement image click */ }
+        )
+        createCallieRoute(
+            onBackPressed =  { appState.navController.navigateUp() },
+            onCreateCallieClick = { /* TODO: Implement Create Callie */ }
         )
     }
 }
