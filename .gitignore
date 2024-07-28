@@ -9,3 +9,5 @@ captures
 .kotlin
 local.properties
 xcuserdata
+androidApp/google-services.json
+iosApp/iosApp/GoogleService-Info.plist

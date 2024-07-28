@@ -9,4 +9,5 @@ plugins {
     alias(libs.plugins.kotlinCocoapods).apply(false)
     alias(libs.plugins.android.dynamic.feature).apply(false)
     alias(libs.plugins.buildKonfig).apply(false)
+    alias(libs.plugins.google.services).apply(false)
 }
