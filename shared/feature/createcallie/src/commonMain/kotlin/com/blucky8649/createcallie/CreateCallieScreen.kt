@@ -25,31 +25,28 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import brocallie.shared.feature.createcallie.generated.resources.Res
 import brocallie.shared.feature.createcallie.generated.resources.add_photo
 import brocallie.shared.feature.createcallie.generated.resources.photo_ai
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_content
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
-import coil3.compose.AsyncImage
 import com.blucky8649.designsystem.BcText
 import com.blucky8649.designsystem.BcTopAppBar
-import com.blucky8649.firebase.uploadImage
 import com.preat.peekaboo.image.picker.SelectionMode
 import com.preat.peekaboo.image.picker.rememberImagePickerLauncher
+import com.preat.peekaboo.image.picker.toImageBitmap
 import compose.icons.TablerIcons
 import compose.icons.tablericons.Check
-import kotlinx.datetime.Clock
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -61,6 +58,7 @@ private val TooltipShape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
 fun CreateCallieScreen(
     onBackButtonPressed: () -> Unit,
     onCreateClick: () -> Unit,
+    viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel() }
 ) {
     Scaffold(
         topBar = {
@@ -69,7 +67,10 @@ fun CreateCallieScreen(
                 navigationIcon = Icons.AutoMirrored.Default.ArrowBack,
                 onNavigationClick = onBackButtonPressed,
                 actionIcon = TablerIcons.Check,
-                onActionClick = onCreateClick,
+                onActionClick = {
+                    viewModel.analyzeImage()
+                    onCreateClick()
+                },
             )
         },
         bottomBar = {
@@ -94,18 +95,15 @@ fun CreateCallieScreen(
             }
         }
     ) { paddingValues: PaddingValues ->
-        var imageUrl: String? by remember { mutableStateOf(null) }
-        var isLoading: Boolean by remember { mutableStateOf(false) }
+        val uiState by viewModel.uiState.collectAsState()
 
         val scope = rememberCoroutineScope()
         val picker = rememberImagePickerLauncher(
             selectionMode = SelectionMode.Single,
             scope = scope,
             onResult = {
-                isLoading = true
-                it.firstOrNull()?.uploadImage(
-                    "brocallie_${Clock.System.now().epochSeconds}"
-                ) { img -> imageUrl = img }
+                val byteArray = it.firstOrNull() ?: return@rememberImagePickerLauncher
+                viewModel.setImage(byteArray)
             }
         )
 
@@ -129,7 +127,6 @@ fun CreateCallieScreen(
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                if (isLoading) return@Column
                 Icon(
                     imageVector = vectorResource(Res.drawable.photo_ai),
                     contentDescription = "add photo",
@@ -145,16 +142,15 @@ fun CreateCallieScreen(
                     modifier = Modifier.padding(5.dp)
                 )
             }
-            imageUrl?.also {
-                AsyncImage(
+            uiState.image.byteArray?.toImageBitmap()?.also {
+                Image(
+                    bitmap = it,
                     modifier = circleModifier,
-                    model = imageUrl,
                     contentDescription = "selected image",
-                    contentScale = ContentScale.Crop,
-                    onSuccess = { isLoading = false }
+                    contentScale = ContentScale.Crop
                 )
             }
-            if (isLoading) { CircularProgressIndicator(modifier = alignCenter) }
+            if (uiState.isLoading) { CircularProgressIndicator(modifier = alignCenter) }
         }
     }
 }
