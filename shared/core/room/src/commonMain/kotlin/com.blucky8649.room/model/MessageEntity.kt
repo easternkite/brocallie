@@ -1,5 +1,6 @@
 package com.blucky8649.room.model
 
+import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Index
@@ -15,7 +16,8 @@ data class MessageEntity(
     val callieId: Long,
     val authorByMe: Boolean,
     val sendAt: Instant,
-    @Embedded val content: Content
+    @Embedded(prefix = "content_")
+    val content: Content
 )
 
 data class Content(
