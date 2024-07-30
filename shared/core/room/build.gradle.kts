@@ -1,19 +1,29 @@
 plugins {
     alias(libs.plugins.brocallie.kotlin.multiplatform.shared)
-    alias(libs.plugins.brocallie.compose.multiplatform.shared)
     alias(libs.plugins.ksp)
     alias(libs.plugins.room)
 }
 
 kotlin {
-    sourceSets.commonMain.dependencies {
-        implementation(libs.androidx.room.runtime)
+    sourceSets.commonMain {
+        kotlin.srcDir("build/generated/ksp/metadata")
+        dependencies {
+            implementation(libs.androidx.room.runtime)
+        }
     }
+
 }
 
 room {
     schemaDirectory("$projectDir/schemas")
 }
+
 dependencies {
-    ksp(libs.androidx.room.compiler)
+    add("kspCommonMainMetadata", libs.androidx.room.compiler)
+}
+
+tasks.withType<org.jetbrains.kotlin.gradle.dsl.KotlinCompile<*>>().configureEach {
+    if (name != "kspCommonMainKotlinMetadata" ) {
+        dependsOn("kspCommonMainKotlinMetadata")
+    }
 }

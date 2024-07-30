@@ -8,6 +8,6 @@ fun getDatabaseBuilder(): RoomDatabase.Builder<BrocallieDatabase> {
     val dbFilePath = NSHomeDirectory().plus("/brocallie_db")
     return Room.databaseBuilder<BrocallieDatabase>(
         name = dbFilePath,
-        factory = { BrocallieDatabase::class.instanciateImpl() }
+        factory = { BrocallieDatabase::class.instantiateImpl() }
     )
 }

@@ -18,10 +18,16 @@ import com.blucky8649.room.util.InstantConverter
     ],
     version = 1
 )
-@TypeConverters(
-    InstantConverter::class
-)
-abstract class BrocallieDatabase : RoomDatabase() {
+@TypeConverters(InstantConverter::class)
+abstract class BrocallieDatabase : RoomDatabase(), ClearAllTablesWorkaround {
     abstract fun callieDao(): CallieDao
     abstract fun message(): MessageDao
+    override fun clearAllTables() {
+        super.clearAllTables()
+    }
+}
+
+// Due to https://issuetracker.google.com/348166275
+interface ClearAllTablesWorkaround {
+    fun clearAllTables(): Unit {}
 }

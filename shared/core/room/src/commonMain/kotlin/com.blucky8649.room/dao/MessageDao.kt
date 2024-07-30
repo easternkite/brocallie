@@ -13,7 +13,7 @@ interface MessageDao {
     fun getMessagesById(id: Long): Flow<List<MessageEntity>>
 
     @Insert
-    fun insertMessage(message: MessageEntity)
+    suspend fun insertMessage(message: MessageEntity)
 
 
     @Query(
@@ -21,7 +21,7 @@ interface MessageDao {
         SELECT 
             m.callieId, 
             c.name AS callieName,
-            m.content AS lastMessageContent, 
+            m.content_text AS lastMessageContent, 
             m.sendAt AS lastMessageSendAt 
         FROM messages m
         INNER JOIN callies c ON m.callieId = c.id

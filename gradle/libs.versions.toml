@@ -27,7 +27,7 @@ datetime = "0.6.0"
 serialization-json = "1.7.1"
 
 room = "2.7.0-alpha05"
-ksp = "2.0.0-1.0.23"
+ksp = "2.0.0-1.0.24"
 peekaboo = "0.5.2"
 
 google-services = "4.4.2"
