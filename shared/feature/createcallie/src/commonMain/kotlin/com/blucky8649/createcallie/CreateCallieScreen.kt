@@ -2,7 +2,6 @@ package com.blucky8649.createcallie
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -42,6 +41,7 @@ import brocallie.shared.feature.createcallie.generated.resources.tooltip_content
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
 import com.blucky8649.designsystem.BcText
 import com.blucky8649.designsystem.BcTopAppBar
+import com.blucky8649.room.BrocallieDatabase
 import com.preat.peekaboo.image.picker.SelectionMode
 import com.preat.peekaboo.image.picker.rememberImagePickerLauncher
 import com.preat.peekaboo.image.picker.toImageBitmap
@@ -50,6 +50,7 @@ import compose.icons.tablericons.Check
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.koinInject
 
 private val TooltipShape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
 
@@ -58,8 +59,10 @@ private val TooltipShape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
 fun CreateCallieScreen(
     onBackButtonPressed: () -> Unit,
     onCreateClick: () -> Unit,
-    viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel() }
 ) {
+    val dbInject = koinInject<BrocallieDatabase>()
+    val viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel(dbInject) }
+
     Scaffold(
         topBar = {
             BcTopAppBar(
@@ -68,8 +71,9 @@ fun CreateCallieScreen(
                 onNavigationClick = onBackButtonPressed,
                 actionIcon = TablerIcons.Check,
                 onActionClick = {
-                    viewModel.analyzeImage()
-                    onCreateClick()
+                    viewModel.analyzeImage {
+                        onCreateClick()
+                    }
                 },
             )
         },

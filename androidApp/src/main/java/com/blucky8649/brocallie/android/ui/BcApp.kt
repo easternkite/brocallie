@@ -1,27 +1,20 @@
-package com.blucky8649.brocallie.android
+package com.blucky8649.brocallie.android.ui
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import com.blucky8649.brocallie.android.navigation.BroCallieNavHost
-import com.blucky8649.brocallie.android.ui.BcAppState
-import com.blucky8649.brocallie.android.ui.rememberBcAppState
-import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import com.blucky8649.ui.BcApp
 
 @Composable
 fun BroCallieApp(
     modifier: Modifier = Modifier,
     appState: BcAppState = rememberBcAppState()
 ) {
-    MyApplicationTheme {
+    BcApp {
         Scaffold(
             modifier = modifier,
             containerColor = Color.Transparent

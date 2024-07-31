@@ -5,6 +5,8 @@ import androidx.lifecycle.viewModelScope
 import com.blucky8649.brocallie.shared.feature.createcallie.BuildKonfig
 import com.blucky8649.firebase.uploadImage
 import com.blucky8649.generative_ai.Gemini
+import com.blucky8649.room.BrocallieDatabase
+import com.blucky8649.room.model.CallieEntity
 import dev.shreyaspatil.ai.client.generativeai.type.content
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -14,7 +16,7 @@ import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.serialization.json.Json
 
-class CreateCallieViewModel: ViewModel() {
+class CreateCallieViewModel(val db: BrocallieDatabase): ViewModel() {
     private val _uiState = MutableStateFlow(CreateCallieUiState())
     val uiState: StateFlow<CreateCallieUiState> = _uiState.asStateFlow()
 
@@ -36,7 +38,7 @@ class CreateCallieViewModel: ViewModel() {
         }
     }
 
-    fun analyzeImage() {
+    fun analyzeImage(onSuccess: () -> Unit = {}) {
         val image = _uiState.value.image.byteArray ?: return
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
@@ -50,10 +52,28 @@ class CreateCallieViewModel: ViewModel() {
             println(response)
 
             runCatching { Json.decodeFromString<AnalyzedCallie>(response) }
-                .onSuccess { println(it) }
+                .onSuccess {
+                    insertCallie(it)
+                    onSuccess()
+                }
                 .onFailure { _uiState.update { it.copy(errorMessage = it.errorMessage) } }
 
             _uiState.update { it.copy(isLoading = false) }
         }
+    }
+
+    private fun insertCallie(analyzed: AnalyzedCallie) = viewModelScope.launch {
+        val callie = CallieEntity(
+            name = analyzed.name,
+            personality = analyzed.personality,
+            job = analyzed.job,
+            tone = analyzed.tone,
+            voice = analyzed.voice,
+            hobby = analyzed.hobby,
+            gender = analyzed.gender,
+            age = analyzed.age,
+            image = _uiState.value.image.url
+        )
+        db.callieDao().insertCallie(callie)
     }
 }

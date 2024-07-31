@@ -24,12 +24,25 @@ internal fun Project.configureKotlinMultiplatform() {
         task("testClasses")
 
         sourceSets.apply {
+            androidMain.dependencies {
+                val koinAndroid = libs.findLibrary("koin-android").get()
+                implementation(koinAndroid)
+                val koinAndroidxCompose = libs.findLibrary("koin-android-compose").get()
+                implementation(koinAndroidxCompose)
+            }
+
             commonMain.dependencies {
+                val koinCore = libs.findLibrary("koin-core").get()
+                implementation(koinCore)
+                val koinCompose = libs.findLibrary("koin-compose").get()
+                implementation(koinCompose)
                 val datetime = libs.findLibrary("kotlinx-datetime").get()
                 implementation(datetime)
             }
 
             commonTest.dependencies {
+                val koinTest = libs.findLibrary("koin-test").get()
+                implementation(koinTest)
                 val test = libs.findLibrary("kotlin-test").get()
                 implementation(test)
             }

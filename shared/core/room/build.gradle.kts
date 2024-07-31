@@ -8,7 +8,7 @@ kotlin {
     sourceSets.commonMain {
         kotlin.srcDir("build/generated/ksp/metadata")
         dependencies {
-            implementation(libs.androidx.room.runtime)
+            api(libs.androidx.room.runtime)
         }
     }
 

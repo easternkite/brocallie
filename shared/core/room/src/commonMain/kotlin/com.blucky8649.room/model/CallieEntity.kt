@@ -13,5 +13,6 @@ data class CallieEntity(
     val voice: String = "",
     val hobby: String = "",
     val gender: String = "",
-    val age: Int = 0
+    val age: Int = 0,
+    val image: String = "",
 )

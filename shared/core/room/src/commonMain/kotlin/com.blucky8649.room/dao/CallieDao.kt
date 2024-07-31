@@ -12,5 +12,5 @@ interface CallieDao {
     fun getCallieList() : Flow<List<CallieEntity>>
 
     @Insert
-    fun insertCallie(callieEntity: CallieEntity)
+    suspend fun insertCallie(callieEntity: CallieEntity)
 }
