@@ -2,30 +2,20 @@ package com.blucky8649.contacts
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.MutableStateFlow
+import com.blucky8649.room.BrocallieDatabase
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
-class ContactViewModel : ViewModel() {
-    private val _uiState = MutableStateFlow(ContactUiState())
-    val uiState: StateFlow<ContactUiState> = _uiState
-
-    init {
-        loadContacts()
-    }
-
-    private fun loadContacts() = viewModelScope.launch {
-        _uiState.value = ContactUiState(isLoading = true)
-        delay(2000L)
-        val contacts = (0 ..< 100).map {
-            Contact(
-                id = it,
-                name = "idong $it",
-                phoneNumber = "010-1234-5678"
-            )
-        }
-        _uiState.value = ContactUiState(contacts = contacts, isLoading = false)
-    }
-
+class ContactViewModel(db: BrocallieDatabase) : ViewModel() {
+    val uiState: StateFlow<ContactUiState> = db.callieDao().getCallieList()
+        .map { callies ->
+            val contact = callies.map { Contact(it.id, it.name, it.personality, it.image) }
+            ContactUiState(contacts = contact)
+        }.stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5_000),
+            initialValue = ContactUiState(isLoading = true)
+        )
 }

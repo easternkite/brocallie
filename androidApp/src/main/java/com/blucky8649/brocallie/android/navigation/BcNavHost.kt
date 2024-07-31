@@ -13,6 +13,7 @@ import com.blucky8649.contactdetails.ROUTE_CONTACT_DETAIL
 import com.blucky8649.contactdetails.contanctDetailRoute
 import com.blucky8649.conversation.chatScreenRoute
 import com.blucky8649.createcallie.createCallieRoute
+import com.blucky8649.createcallie.navigateToCreateCallie
 
 @Composable
 fun BroCallieNavHost(
@@ -24,20 +25,21 @@ fun BroCallieNavHost(
         navController = appState.navController,
         startDestination = ROUTE_CONTACTS
     ) {
-        contactsRoute {
-            appState.navController.navigate(ROUTE_CONTACT_DETAIL)
-        }
+        contactsRoute(
+            onAddButtonClick = appState.navController::navigateToCreateCallie,
+            onContactClick = {}
+        )
         contanctDetailRoute(
-            onBackPressed = { appState.navController.navigateUp() },
-            onSaveButtonClicked = { Log.d("DY_DEBUG", "onSaveButtonClicked") }
+            onBackPressed = appState.navController::navigateUp,
+            onSaveButtonClicked = appState.navController::navigateToCreateCallie
         )
         chatScreenRoute(
-            onBackPressed = { appState.navController.navigateUp() },
+            onBackPressed = appState.navController::navigateUp,
             onImageClick = { /** TODO: Implement image click */ }
         )
         createCallieRoute(
-            onBackPressed =  { appState.navController.navigateUp() },
-            onCreateCallieClick = { /* TODO: Implement Create Callie */ }
+            onBackPressed =  appState.navController::navigateUp,
+            onCreateCallieClick = appState.navController::navigateUp
         )
     }
 }
