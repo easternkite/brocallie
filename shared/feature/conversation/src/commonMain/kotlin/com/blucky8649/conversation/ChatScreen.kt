@@ -31,9 +31,12 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.blucky8649.conversation.component.TextMessage
 import com.blucky8649.conversation.component.UserInputField
 import com.blucky8649.designsystem.BcTopAppBar
+import com.blucky8649.room.BrocallieDatabase
+import com.blucky8649.room.model.CallieEntity
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import org.jetbrains.compose.ui.tooling.preview.Preview
+import org.koin.compose.koinInject
 
 const val ConversationTestTag = "ConversationTestTag"
 
@@ -48,12 +51,13 @@ const val ConversationTestTag = "ConversationTestTag"
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ChatScreen(
-    title: String,
-    viewModel: ChatViewModel = viewModel { ChatViewModel() },
+    callie: CallieEntity,
     onBackPressed: () -> Unit,
     onImageClick: (id: String) -> Unit,
     modifier: Modifier = Modifier,
 ) {
+    val dbInject = koinInject<BrocallieDatabase>()
+    val viewModel: ChatViewModel = viewModel { ChatViewModel(dbInject, callie) }
     val scrollState = rememberLazyListState()
     val topBarState = rememberTopAppBarState()
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(topBarState)
@@ -63,7 +67,7 @@ fun ChatScreen(
     Scaffold(
         topBar = {
           BcTopAppBar(
-              title = title,
+              title = callie.name,
               navigationIcon = Icons.AutoMirrored.Default.ArrowBack,
               onNavigationClick = onBackPressed,
               scrollBehavior = scrollBehavior
@@ -71,7 +75,7 @@ fun ChatScreen(
         },
         bottomBar = {
             UserInputField(
-                onMessageSent = { viewModel.sendMessage(Message(AUTHOR_LEE, it, Clock.System.now().toEpochMilliseconds().toString())) },
+                onMessageSent = { viewModel.sendMessage(Message(AUTHOR_ME, it, Clock.System.now().toEpochMilliseconds().toString())) },
                 resetScroll = { scope.launch { scrollState.animateScrollToItem(0) } },
                 modifier = Modifier.navigationBarsPadding().imePadding()
             )
@@ -102,7 +106,7 @@ fun ChatScreen(
                     TextMessage(
                         author = currentMessage.author,
                         message = currentMessage.content,
-                        isUserMe = currentMessage.author.name == AUTHOR_LEE.name,
+                        isUserMe = currentMessage.author.name == AUTHOR_ME.name,
                         isAuthorRepeated = currentMessage.author == previousMessage?.author,
                         onImageClick = onImageClick
                     )
@@ -116,7 +120,7 @@ fun ChatScreen(
 @Preview
 fun ChatScreenPreView() {
     ChatScreen(
-        title = "Chat",
+        callie = CallieEntity(name = "Callie Preview"),
         onBackPressed = {},
         onImageClick = {}
     )

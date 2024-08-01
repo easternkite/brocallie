@@ -9,9 +9,9 @@ import com.blucky8649.brocallie.android.ui.BcAppState
 import com.blucky8649.brocallie.android.ui.rememberBcAppState
 import com.blucky8649.contacts.ROUTE_CONTACTS
 import com.blucky8649.contacts.contactsRoute
-import com.blucky8649.contactdetails.ROUTE_CONTACT_DETAIL
 import com.blucky8649.contactdetails.contanctDetailRoute
 import com.blucky8649.conversation.chatScreenRoute
+import com.blucky8649.conversation.navigateToChat
 import com.blucky8649.createcallie.createCallieRoute
 import com.blucky8649.createcallie.navigateToCreateCallie
 
@@ -27,7 +27,7 @@ fun BroCallieNavHost(
     ) {
         contactsRoute(
             onAddButtonClick = appState.navController::navigateToCreateCallie,
-            onContactClick = {}
+            onContactClick = appState.navController::navigateToChat
         )
         contanctDetailRoute(
             onBackPressed = appState.navController::navigateUp,

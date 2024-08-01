@@ -13,7 +13,7 @@ import androidx.compose.ui.layout.LastBaseline
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.blucky8649.conversation.AUTHOR_KIM
-import com.blucky8649.conversation.AUTHOR_LEE
+import com.blucky8649.conversation.AUTHOR_ME
 import com.blucky8649.conversation.Author
 import com.blucky8649.designsystem.BcText
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -94,14 +94,14 @@ private fun ChatCircleImage(
 fun TextMessagePreview() {
     Column {
         TextMessage(
-            author = AUTHOR_LEE,
+            author = AUTHOR_ME,
             message = "Hi, nice to meet you.",
             isUserMe = true,
             isAuthorRepeated = false,
         ) {}
         
         TextMessage(
-            author = AUTHOR_LEE,
+            author = AUTHOR_ME,
             message = "How are you?",
             isUserMe = true,
             isAuthorRepeated = true,

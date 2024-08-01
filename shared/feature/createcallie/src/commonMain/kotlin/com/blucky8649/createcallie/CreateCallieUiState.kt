@@ -17,6 +17,7 @@ data class ImageInfo(
 @Serializable
 data class AnalyzedCallie(
     val name: String = "",
+    val type: String = "",
     val personality: String = "",
     val job: String = "",
     val tone: String = "",

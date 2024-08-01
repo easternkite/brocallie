@@ -16,7 +16,7 @@ import com.blucky8649.room.util.InstantConverter
         ChatRoomEntity::class,
         MessageEntity::class
     ],
-    version = 2
+    version = 3
 )
 @TypeConverters(InstantConverter::class)
 abstract class BrocallieDatabase : RoomDatabase(), ClearAllTablesWorkaround {

@@ -2,19 +2,30 @@ package com.blucky8649.conversation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.blucky8649.brocallie.shared.feature.conversation.BuildKonfig
 import com.blucky8649.generative_ai.Gemini
+import com.blucky8649.room.BrocallieDatabase
+import com.blucky8649.room.model.CallieEntity
+import dev.shreyaspatil.ai.client.generativeai.type.content
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
-class ChatViewModel : ViewModel() {
+class ChatViewModel(
+    private val db: BrocallieDatabase,
+    private val callie: CallieEntity
+) : ViewModel() {
     private val _uiState = MutableStateFlow(ChatUiState())
     val uiState: StateFlow<ChatUiState> = _uiState
 
     val chat = Gemini.generativeModel.startChat(
-        history = listOf()
+        history = listOf(
+            content(role = "user") { text(BuildKonfig.PROMPT_MAKE_PERSONA + Json.encodeToString(callie)) }
+        )
     )
 
     fun sendMessage(message: Message) {
@@ -27,7 +38,7 @@ class ChatViewModel : ViewModel() {
                 .getOrNull() ?: return@launch
             val newMessage = _uiState.value.messages.toMutableList()
             val messageFromModel = Message(
-                AUTHOR_KIM,
+                Author(callie.id.toString(), callie.name, callie.image.also { println("image = $it") }),
                 response.text.toString().trim(),
                 Clock.System.now().toEpochMilliseconds().toString()
             )
@@ -37,9 +48,9 @@ class ChatViewModel : ViewModel() {
     }
 }
 
-val AUTHOR_LEE = Author(
+val AUTHOR_ME = Author(
     "1",
-    "Lee",
+    "ME",
     "https://images.unsplash.com/photo-1472491235688-bdc81a63246e?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
 )
 

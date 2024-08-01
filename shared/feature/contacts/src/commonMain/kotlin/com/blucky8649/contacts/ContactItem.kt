@@ -21,19 +21,20 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.blucky8649.designsystem.BcText
+import com.blucky8649.room.model.CallieEntity
 
 @Composable
 fun ContactItem(
     modifier: Modifier = Modifier,
-    contact: Contact,
-    onClick: (name: String) -> Unit = {}
+    contact: CallieEntity,
+    onClick: (CallieEntity) -> Unit = {}
 ) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
             .background(MaterialTheme.colorScheme.surface)
-            .clickable(onClick = { onClick(contact.name) })
+            .clickable(onClick = { onClick(contact) })
             .padding(10.dp)
             .then(modifier),
         verticalAlignment = Alignment.CenterVertically,
@@ -55,7 +56,7 @@ fun ContactItem(
                 style = MaterialTheme.typography.bodyLarge
             )
             BcText(
-                contact.phoneNumber,
+                contact.personality,
                 color = Color.Gray,
                 style = MaterialTheme.typography.bodyMedium
             )
