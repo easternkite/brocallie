@@ -20,6 +20,7 @@ import brocallie.shared.feature.contacts.generated.resources.Res
 import brocallie.shared.feature.contacts.generated.resources.feature_contact_title
 import com.blucky8649.designsystem.BcTopAppBar
 import com.blucky8649.room.BrocallieDatabase
+import com.blucky8649.room.model.CallieEntity
 import compose.icons.TablerIcons
 import compose.icons.tablericons.UserPlus
 import org.jetbrains.compose.resources.stringResource
@@ -29,7 +30,7 @@ import org.koin.compose.koinInject
 @Composable
 fun ContactsScreen(
     modifier: Modifier = Modifier,
-    onContactClick: (String) -> Unit = {},
+    onContactClick: (CallieEntity) -> Unit = {},
     onAddButtonClick: () -> Unit = {}
 ) {
     val dbInject = koinInject<BrocallieDatabase>()
@@ -62,7 +63,7 @@ fun ContactsScreen(
             items(uiState.contacts) {
                 ContactItem(contact = it) {
                     onContactClick(it)
-                    println("click $it")
+                    println("click ${it.name}")
                 }
             }
         }

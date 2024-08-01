@@ -5,5 +5,5 @@ import androidx.compose.ui.window.ComposeUIViewController
 
 @OptIn(ExperimentalMaterial3Api::class)
 fun ContactsViewController(onContactClick: (String) -> Unit) = ComposeUIViewController {
-    ContactsScreen(onContactClick = onContactClick)
+    ContactsScreen(onContactClick = { onContactClick("Callie") })
 }

@@ -38,6 +38,8 @@ internal fun Project.configureKotlinMultiplatform() {
                 implementation(koinCompose)
                 val datetime = libs.findLibrary("kotlinx-datetime").get()
                 implementation(datetime)
+                val serializationJson = libs.findLibrary("kotlinx-serialization-json").get()
+                implementation(serializationJson)
             }
 
             commonTest.dependencies {

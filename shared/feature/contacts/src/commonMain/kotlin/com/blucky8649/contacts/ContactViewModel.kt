@@ -10,10 +10,8 @@ import kotlinx.coroutines.flow.stateIn
 
 class ContactViewModel(db: BrocallieDatabase) : ViewModel() {
     val uiState: StateFlow<ContactUiState> = db.callieDao().getCallieList()
-        .map { callies ->
-            val contact = callies.map { Contact(it.id, it.name, it.personality, it.image) }
-            ContactUiState(contacts = contact)
-        }.stateIn(
+        .map { callies -> ContactUiState(contacts = callies) }
+        .stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(5_000),
             initialValue = ContactUiState(isLoading = true)

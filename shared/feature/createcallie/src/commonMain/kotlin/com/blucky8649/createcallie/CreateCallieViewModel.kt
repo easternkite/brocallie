@@ -65,6 +65,7 @@ class CreateCallieViewModel(val db: BrocallieDatabase): ViewModel() {
     private fun insertCallie(analyzed: AnalyzedCallie) = viewModelScope.launch {
         val callie = CallieEntity(
             name = analyzed.name,
+            type = analyzed.type,
             personality = analyzed.personality,
             job = analyzed.job,
             tone = analyzed.tone,

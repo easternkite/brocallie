@@ -8,6 +8,7 @@ class KotlinMultiplatformSharedConventionPlugin : Plugin<Project> {
         with(target) {
             apply(plugin = "org.jetbrains.kotlin.multiplatform")
             apply(plugin = "com.android.library")
+            apply(plugin = "org.jetbrains.kotlin.plugin.serialization")
 
             configureKotlinMultiplatform()
         }
