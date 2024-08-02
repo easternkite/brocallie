@@ -41,7 +41,7 @@ fun ContactsScreen(
         topBar = {
             BcTopAppBar(
                 title = stringResource(Res.string.feature_contact_title),
-                actionIcon = Icons.Default.MoreVert
+//                actionIcon = Icons.Default.MoreVert
             )
         },
         floatingActionButton = {
