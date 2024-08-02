@@ -3,6 +3,7 @@ package com.blucky8649.createcallie
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
+import java.util.Locale
 
 const val ROUTE_CREATE_CALLIE = "route_create_callie"
 
@@ -11,9 +12,11 @@ fun NavGraphBuilder.createCallieRoute(
     onCreateCallieClick: () -> Unit
 ) {
     composable(ROUTE_CREATE_CALLIE) {
+        val languageCode = Locale.getDefault().language
         CreateCallieScreen(
             onBackButtonPressed = onBackPressed,
-            onCreateClick = onCreateCallieClick
+            onCreateClick = onCreateCallieClick,
+            languageCode = languageCode
         )
     }
 }

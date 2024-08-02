@@ -6,10 +6,12 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.LastBaseline
+import androidx.compose.ui.layout.onSizeChanged
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import com.blucky8649.conversation.AUTHOR_KIM
@@ -31,22 +33,32 @@ fun TextMessage(
         Modifier else Modifier.padding(top = 8.dp)
     
     Row(modifier = spaceBetween.then(modifier)) {
-        if (!isAuthorRepeated) {
-            ChatCircleImage(author = author, onClick = onImageClick)
-        } else {
-            Spacer(modifier = Modifier.width(74.dp))
+        when {
+            isUserMe -> {}
+            isAuthorRepeated -> {
+                Spacer(modifier = Modifier.width(58.dp))
+            }
+            else -> ChatCircleImage(author = author, onClick = onImageClick)
         }
         Column(
             modifier = Modifier
                 .padding(end = 16.dp)
                 .weight(1f),
         ) {
-            if (!isAuthorRepeated) {
-                AuthorName(author.name)
-            } else {
-                Spacer(modifier = Modifier.height(4.dp))
+            when {
+                (isAuthorRepeated || isUserMe) -> Spacer(modifier = Modifier.height(4.dp))
+                else -> AuthorName(author.name)
             }
-            ChatBubble(isUserMe, message)
+
+            ChatBubble(
+                modifier = Modifier
+                    .align(if (isUserMe) Alignment.End else Alignment.Start)
+                    .widthIn(0.dp, 250.dp)
+                ,
+                isUserMe = isUserMe,
+                messageText = message,
+                isAuthorRepeated = isAuthorRepeated
+            )
         }
     }    
 }
@@ -76,7 +88,7 @@ private fun ChatCircleImage(
     val borderColor = MaterialTheme.colorScheme.tertiary
     AsyncImage(
         modifier = Modifier
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 8.dp)
             .size(42.dp)
             .border(1.5.dp, borderColor, CircleShape)
             .border(3.dp, MaterialTheme.colorScheme.surface, CircleShape)

@@ -51,7 +51,7 @@ fun ContactItem(
         )
         Column {
             BcText(
-                contact.name,
+                "${contact.name} (${contact.job})",
                 color = MaterialTheme.colorScheme.onSurface,
                 style = MaterialTheme.typography.bodyLarge
             )

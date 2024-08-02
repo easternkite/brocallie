@@ -59,9 +59,10 @@ private val TooltipShape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
 fun CreateCallieScreen(
     onBackButtonPressed: () -> Unit,
     onCreateClick: () -> Unit,
+    languageCode: String = "en"
 ) {
     val dbInject = koinInject<BrocallieDatabase>()
-    val viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel(dbInject) }
+    val viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel(dbInject, languageCode) }
 
     Scaffold(
         topBar = {
