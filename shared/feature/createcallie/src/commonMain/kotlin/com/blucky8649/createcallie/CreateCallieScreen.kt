@@ -16,6 +16,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Button
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -24,9 +26,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,6 +42,9 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import brocallie.shared.feature.createcallie.generated.resources.Res
 import brocallie.shared.feature.createcallie.generated.resources.add_photo
+import brocallie.shared.feature.createcallie.generated.resources.confirm
+import brocallie.shared.feature.createcallie.generated.resources.create_callie
+import brocallie.shared.feature.createcallie.generated.resources.error_message
 import brocallie.shared.feature.createcallie.generated.resources.photo_ai
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_content
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
@@ -66,13 +75,15 @@ fun CreateCallieScreen(
 
     Scaffold(
         topBar = {
+            val title = stringResource(Res.string.create_callie)
+            val errorMessage = stringResource(Res.string.error_message)
             BcTopAppBar(
-                title = "Create Callie",
+                title = title,
                 navigationIcon = Icons.AutoMirrored.Default.ArrowBack,
                 onNavigationClick = onBackButtonPressed,
                 actionIcon = TablerIcons.Check,
                 onActionClick = {
-                    viewModel.analyzeImage {
+                    viewModel.analyzeImage(errorMessage) {
                         onCreateClick()
                     }
                 },
@@ -101,7 +112,7 @@ fun CreateCallieScreen(
         }
     ) { paddingValues: PaddingValues ->
         val uiState by viewModel.uiState.collectAsState()
-
+        var showErrorDialog by remember { mutableStateOf(false) }
         val scope = rememberCoroutineScope()
         val picker = rememberImagePickerLauncher(
             selectionMode = SelectionMode.Single,
@@ -111,6 +122,28 @@ fun CreateCallieScreen(
                 viewModel.setImage(byteArray)
             }
         )
+
+        LaunchedEffect(uiState.errorMessage) {
+            showErrorDialog = uiState.errorMessage != null
+        }
+
+        if (showErrorDialog) {
+            AlertDialog(
+                onDismissRequest = { viewModel.analyzeImage(null) },
+                text = { Text(text = uiState.errorMessage ?: "Unexpected Error Occurred") },
+                confirmButton = {
+                    Button(onClick = { showErrorDialog = false }) {
+                        Text(stringResource(Res.string.confirm))
+                    }
+                },
+            )
+        }
+
+        LaunchedEffect(uiState.errorMessage) {
+            if (uiState.errorMessage != null) {
+
+            }
+        }
 
         Box(
             modifier = Modifier

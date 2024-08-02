@@ -3,4 +3,6 @@
     <string name = "add_photo"> Add photo </string>
     <string name = "tooltip_title"> Design your own Callie effortlessly! </string>
     <string name = "tooltip_content"> Simply upload a photo to let our advanced AI analyze the photo and suggest a name, personality traits, and an estimated age for your Callie. </string>
+    <string name = "error_message"> There was an error generating Callie. Please try again. </string>
+    <string name = "confirm"> Confirm </string>
 </resources>

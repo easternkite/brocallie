@@ -32,7 +32,6 @@ fun ContactItem(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp)
             .background(MaterialTheme.colorScheme.surface)
             .clickable(onClick = { onClick(contact) })
             .padding(10.dp)

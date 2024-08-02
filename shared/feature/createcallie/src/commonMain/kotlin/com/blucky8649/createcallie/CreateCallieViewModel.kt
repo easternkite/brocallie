@@ -41,16 +41,25 @@ class CreateCallieViewModel(
         }
     }
 
-    fun analyzeImage(onSuccess: () -> Unit = {}) {
-        val image = _uiState.value.image.byteArray ?: return
+    fun analyzeImage(errorMessage: String? = null, onSuccess: () -> Unit = {}) {
         viewModelScope.launch {
-            _uiState.update { it.copy(isLoading = true) }
+            _uiState.update { it.copy(isLoading = true, errorMessage = null) }
+            val image = _uiState.value.image.byteArray
+            if (image == null) {
+                _uiState.update { it.copy(errorMessage = errorMessage, isLoading = false) }
+                return@launch
+            }
             val content = content {
                 image(image)
             }
             val response = kotlin.runCatching { chat.sendMessage(content) }
-                .onFailure { _uiState.update { it.copy(errorMessage = it.errorMessage) } }
-                .getOrNull()?.text ?: return@launch
+                .onFailure { _uiState.update { it.copy(errorMessage = errorMessage ?: it.errorMessage, isLoading = false) } }
+                .getOrNull()?.text
+
+            if (response == null) {
+                _uiState.update { it.copy(errorMessage = errorMessage, isLoading = false) }
+                return@launch
+            }
 
             println(response)
 
@@ -59,7 +68,7 @@ class CreateCallieViewModel(
                     insertCallie(it)
                     onSuccess()
                 }
-                .onFailure { _uiState.update { it.copy(errorMessage = it.errorMessage) } }
+                .onFailure { _uiState.update { it.copy(errorMessage = errorMessage, isLoading = false) } }
 
             _uiState.update { it.copy(isLoading = false) }
         }
