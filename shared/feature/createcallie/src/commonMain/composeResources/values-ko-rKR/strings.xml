@@ -1,6 +1,6 @@
 <resources>
     <string name = "create_callie"> 콜리 생성 </string>
     <string name = "add_photo"> 사진 추가 </string>
-    <string name = "tooltip_title"> 나만의 캘리를 손쉽게 디자인해보아요. </string>
-    <string name = "tooltip_content"> 사진을 업로드하면 AI가 이름, 성격, 나이와 같은 특성을 자동으로 분석하여 사용자 맞춤형 Callie를 생성해줘요. </string>
+    <string name = "tooltip_title"> 나만의 콜리를 손쉽게 디자인해보아요. </string>
+    <string name = "tooltip_content"> 사진을 업로드하면 AI가 이름, 성격, 나이와 같은 특성을 자동으로 분석하여 사용자 맞춤형 콜리를 생성해줘요. </string>
 </resources>
