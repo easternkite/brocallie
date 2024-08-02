@@ -16,13 +16,16 @@ import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.serialization.json.Json
 
-class CreateCallieViewModel(val db: BrocallieDatabase): ViewModel() {
+class CreateCallieViewModel(
+    val db: BrocallieDatabase,
+    val language: String = "en"
+): ViewModel() {
     private val _uiState = MutableStateFlow(CreateCallieUiState())
     val uiState: StateFlow<CreateCallieUiState> = _uiState.asStateFlow()
 
     private val chat = Gemini.generativeModel.startChat(
         history = listOf(
-            content(role = "user") { text(BuildKonfig.PROMPT_ANALYZE) }
+            content(role = "user") { text(BuildKonfig.PROMPT_ANALYZE + "{ \"languageCode\" : \"$language }\"") }
         )
     )
 

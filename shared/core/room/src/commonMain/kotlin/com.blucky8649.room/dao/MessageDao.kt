@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface MessageDao {
-    @Query("SELECT * FROM messages WHERE id = :id ORDER BY sendAt ASC")
+    @Query("SELECT * FROM messages WHERE callieId = :id ORDER BY sendAt DESC")
     fun getMessagesById(id: Long): Flow<List<MessageEntity>>
 
     @Insert
