@@ -9,6 +9,7 @@ kotlin {
         kotlin.srcDir("build/generated/ksp/metadata")
         dependencies {
             api(libs.androidx.room.runtime)
+            api(libs.androidx.sqlite.bundled)
         }
     }
 

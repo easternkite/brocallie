@@ -3,13 +3,13 @@ import SwiftUI
 import shared
 
 struct ChatScreen: UIViewControllerRepresentable {
-    let title: String
+    let callie: RoomCallieEntity
     let onBackPressed: () -> Void
     let onImageClicked: (String) -> Void
     
     func makeUIViewController(context: Context) -> some UIViewController {
         ChatScreen_iosKt.ChatScreenViewController(
-            title: title,
+            callie: callie,
             onBackPressed: onBackPressed,
             onImageClick: onImageClicked
         )
