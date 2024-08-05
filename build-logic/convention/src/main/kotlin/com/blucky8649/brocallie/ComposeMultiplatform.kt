@@ -46,6 +46,11 @@ internal fun Project.configureComposeMultiplatform() {
                 val tablerIcon = libs.findLibrary("composeIcons-tablerIcons").get()
                 implementation(tablerIcon)
             }
+
+            iosMain.dependencies {
+                val ktorIos = libs.findLibrary("ktor-client-ios").get()
+                implementation(ktorIos)
+            }
         }
     }
     extensions.configure<ComposeExtension>() {

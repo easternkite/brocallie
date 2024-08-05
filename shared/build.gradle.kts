@@ -20,6 +20,7 @@ kotlin {
             export(projects.shared.feature.conversation)
             export(projects.shared.feature.createcallie)
             export(projects.shared.core.firebase)
+            linkerOpts("-framework", "FirebaseStorage")
         }
     }
 

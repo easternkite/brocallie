@@ -3,15 +3,37 @@ import shared
 
 struct ContentView: View {
     @State var showContactDetails: Bool = false
+    @State var showCreateCallie: Bool = false
+    @State var currentCallie: RoomCallieEntity? = nil
 
 	var body: some View {
         NavigationStack {
-            ContactScreen { name in
-                showContactDetails = true
-            }.ignoresSafeArea(.container)
+            ContactScreen(
+                onContactClick: { callie in
+                    showContactDetails = true
+                    currentCallie = callie
+                },
+                onAddButtonClick: {showCreateCallie = true }
+            )
+            .ignoresSafeArea(.container)
             .navigationDestination(isPresented: $showContactDetails) {
-                ChatScreen(title: "Chat", onBackPressed: { showContactDetails = false }, onImageClicked: {it in it }).ignoresSafeArea(.container)
-                .navigationBarBackButtonHidden(true)
+                if let callie = self.currentCallie {
+                    ChatScreen(
+                        callie: callie,
+                        onBackPressed: {
+                            showContactDetails = false
+                            currentCallie = nil
+                        },
+                        onImageClicked: {_ in  }
+                    )
+                    .ignoresSafeArea(.container)
+                    .navigationBarBackButtonHidden(true)
+                }
+            }
+            .navigationDestination(isPresented: $showCreateCallie) {
+                CreateCallieScreen { showCreateCallie = false}
+                    .ignoresSafeArea(.container)
+                    .navigationBarBackButtonHidden()
             }
         }
 	}

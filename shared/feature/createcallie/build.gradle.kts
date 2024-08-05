@@ -26,5 +26,6 @@ kotlin {
         implementation(projects.shared.core.firebase)
         implementation(projects.shared.core.generativeAi)
         implementation(projects.shared.core.room)
+        implementation(projects.shared.core.ui)
     }
 }
