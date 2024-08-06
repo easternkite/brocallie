@@ -21,6 +21,7 @@ kotlin {
             export(projects.shared.feature.createcallie)
             export(projects.shared.core.firebase)
             linkerOpts("-framework", "FirebaseStorage")
+            linkerOpts.add("-lsqlite3")
         }
     }
 

@@ -26,7 +26,8 @@ struct ContentView: View {
                         },
                         onImageClicked: {_ in  }
                     )
-                    .ignoresSafeArea(.container)
+                    .edgesIgnoringSafeArea(.all)
+                    .ignoresSafeArea(.keyboard)
                     .navigationBarBackButtonHidden(true)
                 }
             }
