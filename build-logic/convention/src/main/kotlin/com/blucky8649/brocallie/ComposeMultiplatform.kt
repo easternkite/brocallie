@@ -45,6 +45,10 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(coilComposeCore)
                 val tablerIcon = libs.findLibrary("composeIcons-tablerIcons").get()
                 implementation(tablerIcon)
+                val decomposeCore = libs.findLibrary("decompose-core").get()
+                implementation(decomposeCore)
+                val decomposeCompose = libs.findLibrary("decompose-compose").get()
+                implementation(decomposeCompose)
             }
 
             iosMain.dependencies {

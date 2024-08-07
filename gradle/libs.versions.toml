@@ -36,6 +36,8 @@ composeIcons = "1.1.0"
 androidxComposeBom = "2024.06.00"
 sqliteBundled = "2.5.0-alpha05"
 
+decompose = "3.0.0"
+
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqliteBundled" }
@@ -77,6 +79,9 @@ ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", vers
 ktor-client-ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
+decompose-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
 
 
 coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
