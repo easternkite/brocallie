@@ -19,9 +19,12 @@ import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.ScaffoldDefaults
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
@@ -36,6 +39,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.blucky8649.conversation.component.TextMessage
 import com.blucky8649.conversation.component.UserInputField
 import com.blucky8649.designsystem.BcTopAppBar
+import com.blucky8649.designsystem.loading.LoadingProgressView
 import com.blucky8649.room.BrocallieDatabase
 import com.blucky8649.room.model.CallieEntity
 import kotlinx.coroutines.launch
@@ -65,6 +69,7 @@ fun ChatScreen(
     val viewModel: ChatViewModel = viewModel { ChatViewModel(dbInject, callie) }
     val scrollState = rememberLazyListState()
     val topBarState = rememberTopAppBarState()
+    val snackbarHostState = remember { SnackbarHostState() }
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(topBarState)
     val chatUiState by viewModel.uiState.collectAsState()
     val scope = rememberCoroutineScope()
@@ -78,6 +83,7 @@ fun ChatScreen(
               scrollBehavior = scrollBehavior
           )
         },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
         bottomBar = {
             UserInputField(
                 onMessageSent = { viewModel.sendMessage(Message(AUTHOR_ME, it, Clock.System.now().toEpochMilliseconds().toString())) },
@@ -94,6 +100,13 @@ fun ChatScreen(
         val keyboardController = LocalSoftwareKeyboardController.current
         val focusManager = LocalFocusManager.current
         val interactionSource = remember { MutableInteractionSource() }
+
+        LaunchedEffect(chatUiState.errorMessage) {
+            if (chatUiState.errorMessage.isNotEmpty()) {
+                snackbarHostState.showSnackbar(message = chatUiState.errorMessage)
+            }
+        }
+
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -118,6 +131,18 @@ fun ChatScreen(
                     .testTag(ConversationTestTag),
                 contentPadding = PaddingValues(bottom = 5.dp)
             ) {
+                if (chatUiState.isLoading) {
+                    item {
+                        TextMessage(
+                            author = Author(callie.id.toString(), callie.name, callie.image),
+                            isUserMe = false,
+                            isAuthorRepeated = false,
+                            onImageClick = {},
+                        ) {
+                            LoadingProgressView(modifier = Modifier.padding(16.dp))
+                        }
+                    }
+                }
                 items(chatUiState.messages.size) {
                     val currentMessage = chatUiState.messages[it]
                     val previousMessage = chatUiState.messages.getOrNull(it + 1)

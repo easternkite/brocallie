@@ -9,12 +9,10 @@ import com.blucky8649.room.model.CallieEntity
 import com.blucky8649.room.model.Content
 import com.blucky8649.room.model.MessageEntity
 import dev.shreyaspatil.ai.client.generativeai.type.content
-import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.datetime.Clock
 import kotlinx.serialization.encodeToString
@@ -29,42 +27,45 @@ class ChatViewModel(
         content(role = "user") { text(BuildKonfig.PROMPT_MAKE_PERSONA + Json.encodeToString(callie)) }
     )
 
-    val uiState: StateFlow<ChatUiState> = db.message().getMessagesById(callie.id)
-        .onStart { flowOf(ChatUiState(isLoading = true)) }
-        .map {
-            val historyPrompt = it.map { msg ->
-                val role = if (msg.authorByMe) "user" else "model"
-                val message = msg.content.text
-                content(role) { text(message) }
-            }
+    private val _uiState: MutableStateFlow<ChatUiState> = MutableStateFlow(ChatUiState())
+    val uiState: StateFlow<ChatUiState> = _uiState.asStateFlow()
 
-            chat.history.apply {
-                clear()
-                addAll(initialPrompt + historyPrompt.reversed())
-            }
-
-            println(chat.history.size)
-
-            val messages = it.map { msg ->
-                val author = if (msg.authorByMe) AUTHOR_ME
-                else Author(callie.id.toString(), callie.name, callie.image)
-
-                Message(
-                    author = author,
-                    content = msg.content.text,
-                    timestamp = msg.sendAt.toEpochMilliseconds().toString()
-                )
-            }
-            ChatUiState(messages = messages, isLoading = false)
-        }.stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = ChatUiState(isLoading = true)
-        )
-
-    val chat = Gemini.generativeModel.startChat(
+    private val chat = Gemini.generativeModel.startChat(
         history = initialPrompt
     )
+
+    init {
+        viewModelScope.launch {
+            db.message()
+                .getMessagesById(callie.id)
+                .collect {
+                    val historyPrompt = it.map { msg ->
+                        val role = if (msg.authorByMe) "user" else "model"
+                        val message = msg.content.text
+                        content(role) { text(message) }
+                    }
+
+                    chat.history.apply {
+                        clear()
+                        addAll(initialPrompt + historyPrompt.reversed())
+                    }
+
+                    println(chat.history.size)
+
+                    val messages = it.map { msg ->
+                        val author = if (msg.authorByMe) AUTHOR_ME
+                        else Author(callie.id.toString(), callie.name, callie.image)
+
+                        Message(
+                            author = author,
+                            content = msg.content.text,
+                            timestamp = msg.sendAt.toEpochMilliseconds().toString()
+                        )
+                    }
+                    _uiState.update { it.copy(messages = messages) }
+                }
+        }
+    }
 
     fun sendMessage(message: Message) {
         viewModelScope.launch {
@@ -79,8 +80,13 @@ class ChatViewModel(
             )
             db.message().insertMessage(fromMe)
 
+            _uiState.update { it.copy(isLoading = true, errorMessage = "") }
+
             val response = kotlin.runCatching { chat.sendMessage(message.content) }
-                .getOrNull() ?: return@launch
+                .getOrNull() ?: run {
+                    _uiState.update { it.copy(isLoading = false, errorMessage = "Something went wrong. Please try again.") }
+                    return@launch
+            }
             println(response.text)
 
             val fromCallie = MessageEntity(
@@ -93,6 +99,8 @@ class ChatViewModel(
                 )
             )
             db.message().insertMessage(fromCallie)
+
+            _uiState.update { it.copy(isLoading = false) }
         }
     }
 }
