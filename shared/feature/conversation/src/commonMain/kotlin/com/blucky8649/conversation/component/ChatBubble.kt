@@ -25,19 +25,10 @@ fun ChatBubble(
     isAuthorRepeated: Boolean = false,
     messageText: String,
 ) {
-    val bubbleColor = if (isUserMe) { MaterialTheme.colorScheme.primary }
-    else { MaterialTheme.colorScheme.surfaceVariant }
-    
-    val shape = when {
-        isAuthorRepeated -> ChatBubbleShapeRepeated
-        isUserMe -> ChatBubbleShapeFromMe
-        else -> ChatBubbleShape
-    }
-    
-    Surface(
-        modifier = modifier,
-        color = bubbleColor,
-        shape = shape
+    ChatBubble(
+        modifier,
+        isUserMe,
+        isAuthorRepeated
     ) {
         BcText(
             text = messageText,
@@ -45,6 +36,30 @@ fun ChatBubble(
             style = MaterialTheme.typography.bodyLarge
         )
     }
+}
+
+@Composable
+fun ChatBubble(
+    modifier: Modifier = Modifier,
+    isUserMe: Boolean = false,
+    isAuthorRepeated: Boolean = false,
+    content: @Composable () -> Unit,
+) {
+    val bubbleColor = if (isUserMe) { MaterialTheme.colorScheme.primary }
+    else { MaterialTheme.colorScheme.surfaceVariant }
+
+    val shape = when {
+        isAuthorRepeated -> ChatBubbleShapeRepeated
+        isUserMe -> ChatBubbleShapeFromMe
+        else -> ChatBubbleShape
+    }
+
+    Surface(
+        modifier = modifier,
+        color = bubbleColor,
+        shape = shape,
+        content = content
+    )
 }
 
 @Composable

@@ -29,9 +29,37 @@ fun TextMessage(
     isAuthorRepeated: Boolean,
     onImageClick: (id: String) -> Unit
 ) {
+    TextMessage(
+        author,
+        modifier,
+        isUserMe,
+        isAuthorRepeated,
+        onImageClick
+    ) {
+        ChatBubble(
+            modifier = Modifier
+                .align(if (isUserMe) Alignment.End else Alignment.Start)
+                .widthIn(0.dp, 250.dp),
+            isUserMe = isUserMe,
+            messageText = message,
+            isAuthorRepeated = isAuthorRepeated
+        )
+    }
+}
+
+@Composable
+fun TextMessage(
+    author: Author,
+    modifier: Modifier = Modifier,
+    isUserMe: Boolean = false,
+    isAuthorRepeated: Boolean,
+    onImageClick: (id: String) -> Unit,
+    content: @Composable ColumnScope.() -> Unit
+) {
+
     val spaceBetween = if (isAuthorRepeated)
         Modifier else Modifier.padding(top = 8.dp)
-    
+
     Row(modifier = spaceBetween.then(modifier)) {
         when {
             isUserMe -> {}
@@ -56,11 +84,11 @@ fun TextMessage(
                     .widthIn(0.dp, 250.dp)
                 ,
                 isUserMe = isUserMe,
-                messageText = message,
-                isAuthorRepeated = isAuthorRepeated
+                isAuthorRepeated = isAuthorRepeated,
+                content = { content() }
             )
         }
-    }    
+    }
 }
 
 @Composable
