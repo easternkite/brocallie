@@ -27,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.key
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
@@ -66,7 +67,7 @@ fun ChatScreen(
     modifier: Modifier = Modifier,
 ) {
     val dbInject = koinInject<BrocallieDatabase>()
-    val viewModel: ChatViewModel = viewModel { ChatViewModel(dbInject, callie) }
+    val viewModel: ChatViewModel = viewModel(key = callie.id.toString()) { ChatViewModel(dbInject, callie) }
     val scrollState = rememberLazyListState()
     val topBarState = rememberTopAppBarState()
     val snackbarHostState = remember { SnackbarHostState() }

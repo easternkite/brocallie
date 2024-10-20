@@ -5,13 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import com.blucky8649.brocallie.android.ui.BroCallieApp
+import com.blucky8649.ui.navigation.BcNavHost
+import com.easternkite.eungabi.navigation.rememberEunGabiController
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BroCallieApp()
+            val controller = rememberEunGabiController()
+            BcNavHost(controller = controller)
         }
     }
 }
@@ -19,5 +21,5 @@ class MainActivity : ComponentActivity() {
 @Composable
 @Preview(showSystemUi = true)
 fun BroCallieAppPreview() {
-    BroCallieApp()
+
 }

@@ -1,7 +1,7 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'firebase'
     spec.version                  = '1.0.0'
-    spec.homepage                 = 'https://github.com/blucky8649/brocallie'
+    spec.homepage                 = 'https://github.com/eastrnkite/brocallie'
     spec.source                   = { :http=> ''}
     spec.authors                  = ''
     spec.license                  = ''

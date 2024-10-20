@@ -3,7 +3,6 @@ package com.blucky8649.firebase
 import cocoapods.FirebaseStorage.FIRStorage
 import cocoapods.FirebaseStorage.FIRStorageMetadata
 import io.ktor.utils.io.errors.PosixException
-import kotlinx.cinterop.BetaInteropApi
 import kotlinx.cinterop.ExperimentalForeignApi
 import kotlinx.cinterop.addressOf
 import kotlinx.cinterop.usePinned
@@ -17,7 +16,7 @@ val storage = FIRStorage.storageWithURL(BUCKET_URL)
 
 
 
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
+@OptIn(ExperimentalForeignApi::class)
 actual fun ByteArray.uploadImage(
     imageName: String,
     completion: (url: String?) -> Unit
@@ -43,7 +42,7 @@ actual fun ByteArray.uploadImage(
     }
 }
 
-@OptIn(ExperimentalForeignApi::class, BetaInteropApi::class)
+@OptIn(ExperimentalForeignApi::class)
 fun ByteArray.toNSData(): NSData {
     return this.usePinned { pinned ->
         NSData.create(bytes = pinned.addressOf(0), length = this.size.toULong())

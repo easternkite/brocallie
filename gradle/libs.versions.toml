@@ -4,11 +4,11 @@ agp = "8.4.2"
 androidTools = "31.5.0"
 firebaseBom = "33.1.2"
 googleCloudTexttospeech = "2.0.1"
-kotlin = "2.0.0"
+kotlin = "2.0.21"
 compose = "1.5.4"
 compose-compiler = "1.5.4"
 compose-material3 = "1.1.2"
-compose-plugin = "1.7.0-beta02"
+compose-plugin = "1.7.0"
 androidx-activityCompose = "1.8.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -27,7 +27,7 @@ datetime = "0.6.0"
 serialization-json = "1.7.1"
 
 room = "2.7.0-alpha05"
-ksp = "2.0.0-1.0.24"
+ksp = "2.0.21-1.0.25"
 peekaboo = "0.5.2"
 koin = "4.0.0-RC1"
 
@@ -35,6 +35,9 @@ google-services = "4.4.2"
 composeIcons = "1.1.0"
 androidxComposeBom = "2024.06.00"
 sqliteBundled = "2.5.0-alpha05"
+
+eungabi = "0.1.0-alpha01"
+urlencoder = "1.6.0"
 
 decompose = "3.0.0"
 
@@ -82,6 +85,9 @@ material = { group = "com.google.android.material", name = "material", version.r
 
 decompose-core = { module = "com.arkivanov.decompose:decompose", version.ref = "decompose" }
 decompose-compose = { module = "com.arkivanov.decompose:extensions-compose", version.ref = "decompose" }
+
+eungabi = { module = "io.github.easternkite:eungabi", version.ref = "eungabi"}
+urlencoder = { module = "net.thauvin.erik.urlencoder:urlencoder-lib", version.ref = "urlencoder"}
 
 
 coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }

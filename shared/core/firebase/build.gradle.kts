@@ -9,7 +9,7 @@ kotlin {
     cocoapods {
         version = "1.0.0"
         summary = "Firebase Storage for KMP Integration"
-        homepage = "https://github.com/blucky8649/brocallie"
+        homepage = "https://github.com/eastrnkite/brocallie"
 
         ios.deploymentTarget = "13.5"
 

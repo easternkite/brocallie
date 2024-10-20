@@ -34,13 +34,8 @@ android {
 }
 
 dependencies {
-    api(projects.shared.core.designsystem)
     api(projects.shared.core.ui)
-    api(projects.shared.feature.contacts)
-    api(projects.shared.feature.contactdetails)
-    api(projects.shared.feature.conversation)
-    api(projects.shared.feature.createcallie)
-
+    implementation(libs.eungabi)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.storage.ktx)
 

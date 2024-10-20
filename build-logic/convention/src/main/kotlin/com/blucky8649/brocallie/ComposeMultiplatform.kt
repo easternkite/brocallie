@@ -11,8 +11,6 @@ internal fun Project.configureComposeMultiplatform() {
     extensions.configure<KotlinMultiplatformExtension> {
         sourceSets.apply {
             androidMain.dependencies {
-                val navigationCompose = libs.findLibrary("androidx-navigation-compose").get()
-                implementation(navigationCompose.get())
                 val ktorAndroid = libs.findLibrary("ktor-client-android").get()
                 implementation(ktorAndroid.get())
                 val bom = libs.findLibrary("androidx-compose-bom").get()
@@ -45,10 +43,10 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(coilComposeCore)
                 val tablerIcon = libs.findLibrary("composeIcons-tablerIcons").get()
                 implementation(tablerIcon)
-                val decomposeCore = libs.findLibrary("decompose-core").get()
-                implementation(decomposeCore)
-                val decomposeCompose = libs.findLibrary("decompose-compose").get()
-                implementation(decomposeCompose)
+                val eungabi = libs.findLibrary("eungabi").get()
+                implementation(eungabi)
+                val urlEncoder = libs.findLibrary("urlencoder").get()
+                implementation(urlEncoder)
             }
 
             iosMain.dependencies {
