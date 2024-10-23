@@ -4,4 +4,13 @@
     <string name = "feature_contact_detail_nickname"> Nickname </string>
     <string name = "feature_contact_detail_contact"> Contact </string>
     <string name = "feature_contact_detail_save"> Save </string>
+
+
+    <string name = "type">Type</string>
+    <string name = "gender">Gender</string>
+    <string name = "hobby">Hobby</string>
+    <string name = "job">Job</string>
+    <string name = "personality">Personality</string>
+    <string name = "tone">Tone</string>
+    <string name = "voice">Voice</string>
 </resources>

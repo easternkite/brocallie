@@ -4,4 +4,12 @@
     <string name = "feature_contact_detail_nickname"> 별명 </string>
     <string name = "feature_contact_detail_contact"> 연락처 </string>
     <string name = "feature_contact_detail_save"> 저장 </string>
+
+    <string name = "type">종류</string>
+    <string name = "gender">성별</string>
+    <string name = "hobby">취미</string>
+    <string name = "job">직업</string>
+    <string name = "personality">성격</string>
+    <string name = "tone">말투</string>
+    <string name = "voice">목소리</string>
 </resources>

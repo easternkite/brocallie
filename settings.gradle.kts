@@ -19,7 +19,7 @@ rootProject.name = "BroCallie"
 include(":androidApp")
 
 include(":shared:feature:contacts")
-include(":shared:feature:contactdetails")
+include(":shared:feature:profile")
 include(":shared:feature:createcallie")
 include(":shared:feature:conversation")
 
