@@ -25,74 +25,28 @@ import compose.icons.tablericons.BrandKotlin
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-const val ROUTE_CONTACT_DETAIL = "route_contact_detail"
-
-@OptIn(ExperimentalMaterial3Api::class)
-fun EunGabiGraphBuilder.profileRoute(
-    onBackPressed: () -> Unit,
-    onSaveButtonClicked: () -> Unit
-) {
-    composable(route = ROUTE_CONTACT_DETAIL) {
-        Column {
-            BcTopAppBar(
-                title = stringResource(Res.string.feature_contact_detail_title),
-                navigationIcon = Icons.AutoMirrored.Default.ArrowBack,
-                navigationIconContentDescription = stringResource(Res.string.feature_contact_detail_title),
-                actionIcon = Icons.Default.MoreVert,
-                actionIconContentDescription = "",
-                onActionClick = {},
-                onNavigationClick = onBackPressed
-            )
-
-        }
-    }
-}
-
-fun EunGabiController.navigateToContactDetail() {
-    navigate(ROUTE_CONTACT_DETAIL)
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-@Preview(apiLevel = 35)
 fun ProfilePreview() {
-    Box {
-        BcTopAppBar(
-            modifier = Modifier.zIndex(1f),
-            colors = TopAppBarDefaults
-                .centerAlignedTopAppBarColors()
-                .copy(
-                    containerColor = Color.Transparent,
-                    navigationIconContentColor = Color.White,
-                    actionIconContentColor = Color.White
-                ),
-            title = "",
-            navigationIcon = Icons.AutoMirrored.Default.ArrowBack,
-            navigationIconContentDescription = stringResource(Res.string.feature_contact_detail_title),
-            actionIcon = Icons.Default.MoreVert,
-            actionIconContentDescription = "",
-            onActionClick = {},
-            onNavigationClick = {}
-        )
-        ProfileScreen(
-            name = "BroCallie",
-            image = {
-                Image(
-                    modifier = it,
-                    painter = painterResource(Res.drawable.ic_brocallie_graphic),
-                    contentDescription = "preview image",
-                    contentScale = ContentScale.Crop
-                )
-            },
-            type = "Vegetable",
-            personality = "Ferocity",
-            gender = "Male",
-            job = "Vegetable worker",
-            tone = "Bright",
-            hobby = "Reading a book",
-            voice = "A husky voice"
-        )
-    }
+    ProfileScreen(
+        name = "BroCallie",
+        image = {
+            Image(
+                modifier = it,
+                painter = painterResource(Res.drawable.ic_brocallie_graphic),
+                contentDescription = "preview image",
+                contentScale = ContentScale.Crop
+            )
+        },
+        type = "Vegetable",
+        personality = "Ferocity",
+        gender = "Male",
+        job = "Vegetable worker",
+        age = 13,
+        tone = "Bright",
+        hobby = "Reading a book",
+        voice = "A husky voice",
+        onBackPressed = {}
+    )
 
 }
 

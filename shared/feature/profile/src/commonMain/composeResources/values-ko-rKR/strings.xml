@@ -6,6 +6,7 @@
     <string name = "feature_contact_detail_save"> 저장 </string>
 
     <string name = "type">종류</string>
+    <string name = "age">나이</string>
     <string name = "gender">성별</string>
     <string name = "hobby">취미</string>
     <string name = "job">직업</string>

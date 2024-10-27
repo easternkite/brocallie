@@ -14,7 +14,7 @@ const val KEY_IMAGE = "key_image"
 
 fun EunGabiGraphBuilder.chatScreenRoute(
     onBackPressed: () -> Unit,
-    onImageClick: (id: String) -> Unit
+    onImageClick: (callie: CallieEntity) -> Unit
 ) {
     composable(ROUTE_CHAT) {
         val callieJson = it.arguments.getString(KEY_CALLIE)
@@ -28,7 +28,7 @@ fun EunGabiGraphBuilder.chatScreenRoute(
         ChatScreen(
             callie = callie,
             onBackPressed = onBackPressed,
-            onImageClick = onImageClick
+            onImageClick = { onImageClick(callie) }
         )
     }
 }

@@ -8,6 +8,8 @@ import com.blucky8649.conversation.navigation.chatScreenRoute
 import com.blucky8649.conversation.navigation.navigateToChat
 import com.blucky8649.createcallie.navigation.createCallieRoute
 import com.blucky8649.createcallie.navigation.navigateToCreateCallie
+import com.blucky8649.profile.navigation.navigateToProfile
+import com.blucky8649.profile.navigation.profileRoute
 import com.blucky8649.ui.BcApp
 import com.easternkite.eungabi.navigation.EunGabiController
 import com.easternkite.eungabi.navigation.EunGabiNavHost
@@ -31,11 +33,14 @@ fun BcNavHost(
             )
             chatScreenRoute(
                 onBackPressed = controller::navigateUp,
-                onImageClick = {  } // TODO: Have to develop Profile Screen.
+                onImageClick = controller::navigateToProfile
             )
             createCallieRoute(
                 onBackPressed = controller::navigateUp,
                 onCreateCallieClick = controller::navigateUp
+            )
+            profileRoute(
+                onBackPressed = controller::navigateUp
             )
         }
     }

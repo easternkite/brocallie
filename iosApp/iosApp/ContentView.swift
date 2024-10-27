@@ -14,7 +14,8 @@ struct ContentView: View {
 
 	var body: some View {
         ComposeView()
-            .ignoresSafeArea(.all, edges: .bottom)
+            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea(.keyboard)
 	}
 }
 

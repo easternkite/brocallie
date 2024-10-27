@@ -8,6 +8,7 @@
 
     <string name = "type">Type</string>
     <string name = "gender">Gender</string>
+    <string name = "age">Age</string>
     <string name = "hobby">Hobby</string>
     <string name = "job">Job</string>
     <string name = "personality">Personality</string>

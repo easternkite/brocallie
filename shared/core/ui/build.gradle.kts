@@ -9,5 +9,6 @@ kotlin {
         implementation(projects.shared.feature.contacts)
         implementation(projects.shared.feature.conversation)
         implementation(projects.shared.feature.createcallie)
+        implementation(projects.shared.feature.profile)
     }
 }
