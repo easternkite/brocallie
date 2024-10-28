@@ -17,7 +17,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -45,11 +44,9 @@ import brocallie.shared.feature.profile.generated.resources.ic_category
 import brocallie.shared.feature.profile.generated.resources.ic_gender_bigender
 import brocallie.shared.feature.profile.generated.resources.ic_old
 import brocallie.shared.feature.profile.generated.resources.job
-import brocallie.shared.feature.profile.generated.resources.mood_happy
 import brocallie.shared.feature.profile.generated.resources.personality
 import brocallie.shared.feature.profile.generated.resources.tone
 import brocallie.shared.feature.profile.generated.resources.type
-import brocallie.shared.feature.profile.generated.resources.voice
 import com.blucky8649.designsystem.BcTopAppBar
 import compose.icons.TablerIcons
 import compose.icons.tablericons.User
@@ -69,8 +66,7 @@ fun ProfileScreen(
     hobby: String = "",
     job: String = "",
     personality: String = "",
-    tone: String = "",
-    voice: String = ""
+    tone: String = ""
 ) {
     Box(modifier = modifier) {
         BcTopAppBar(
@@ -149,12 +145,6 @@ fun ProfileScreen(
                         title = stringResource(Res.string.tone),
                         content = tone,
                         startIcon = vectorResource(Res.drawable.brand_deezer)
-                    )
-                    Spacer(modifier = Modifier.height(8.dp))
-                    TraitCard(
-                        title = stringResource(Res.string.voice),
-                        content = voice,
-                        startIcon = vectorResource(Res.drawable.mood_happy)
                     )
                 }
             }

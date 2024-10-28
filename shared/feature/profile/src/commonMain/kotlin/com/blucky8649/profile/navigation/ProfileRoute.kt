@@ -45,7 +45,6 @@ fun EunGabiGraphBuilder.profileRoute(
             hobby = callie.hobby,
             personality = callie.personality,
             tone = callie.tone,
-            voice = callie.voice
         )
     }
 }
