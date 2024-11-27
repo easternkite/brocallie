@@ -47,6 +47,8 @@ internal fun Project.configureComposeMultiplatform() {
                 implementation(eungabi)
                 val urlEncoder = libs.findLibrary("urlencoder").get()
                 implementation(urlEncoder)
+                val materialKolor = libs.findLibrary("materialKolor").get()
+                implementation(materialKolor)
             }
 
             iosMain.dependencies {

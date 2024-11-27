@@ -11,7 +11,7 @@ actual fun BcApp(
     content: @Composable () -> Unit
 ) {
     val context = LocalContext.current
-    BcAndroidTheme {
+    BcTheme {
         KoinApplication(
             application = {
                 androidContext(context)

@@ -30,7 +30,7 @@ room = "2.7.0-alpha05"
 ksp = "2.0.21-1.0.25"
 peekaboo = "0.5.2"
 koin = "4.0.0"
-
+materialKolor = "2.0.0"
 google-services = "4.4.2"
 composeIcons = "1.1.0"
 androidxComposeBom = "2024.06.00"
@@ -89,6 +89,7 @@ decompose-compose = { module = "com.arkivanov.decompose:extensions-compose", ver
 eungabi = { module = "io.github.easternkite:eungabi", version.ref = "eungabi"}
 urlencoder = { module = "net.thauvin.erik.urlencoder:urlencoder-lib", version.ref = "urlencoder"}
 
+materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
 
 coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }

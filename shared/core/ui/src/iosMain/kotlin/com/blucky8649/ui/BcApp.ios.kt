@@ -1,6 +1,5 @@
 package com.blucky8649.ui
 
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.window.ComposeUIViewController
 import coil3.ImageLoader
@@ -18,7 +17,7 @@ import org.koin.compose.KoinApplication
 actual fun BcApp(
     content: @Composable () -> Unit
 ) {
-    MaterialTheme {
+    BcTheme {
         setSingletonImageLoaderFactory { context ->
             ImageLoader.Builder(context).crossfade(true).logger(DebugLogger()).build()
         }
