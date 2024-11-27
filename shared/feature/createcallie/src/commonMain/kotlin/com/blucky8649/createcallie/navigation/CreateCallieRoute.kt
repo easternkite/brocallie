@@ -13,6 +13,7 @@ fun EunGabiGraphBuilder.createCallieRoute(
 ) {
     composable(ROUTE_CREATE_CALLIE) {
         CreateCallieScreen(
+            screenId = it.id,
             onBackButtonPressed = onBackPressed,
             onCreateClick = onCreateCallieClick,
             languageCode = getLanguageCode()

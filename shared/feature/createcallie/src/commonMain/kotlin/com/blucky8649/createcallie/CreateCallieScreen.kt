@@ -66,12 +66,13 @@ private val TooltipShape = RoundedCornerShape(20.dp, 20.dp, 20.dp, 20.dp)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CreateCallieScreen(
+    screenId: String,
     onBackButtonPressed: () -> Unit,
     onCreateClick: () -> Unit,
     languageCode: String = "en"
 ) {
     val dbInject = koinInject<BrocallieDatabase>()
-    val viewModel: CreateCallieViewModel = viewModel { CreateCallieViewModel(dbInject, languageCode) }
+    val viewModel: CreateCallieViewModel = viewModel(key = screenId) { CreateCallieViewModel(dbInject, languageCode) }
 
     Scaffold(
         topBar = {
@@ -197,6 +198,7 @@ fun CreateCallieScreen(
 @Preview
 fun CreateCallieScreenPreview() {
     CreateCallieScreen(
+        screenId = "",
         onBackButtonPressed = {},
         onCreateClick = {}
     )
