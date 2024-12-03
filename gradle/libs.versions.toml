@@ -133,10 +133,10 @@ google-services = { id = "com.google.gms.google-services", version.ref = "google
 
 
 # Convention Plugins
-brocallie-android-application-compose = { id = "brocallie.android.application.compose", version = "unspecified" }
-brocallie-compose-multiplatform-shared = { id = "brocallie.compose.multiplatform.shared", version = "unspecified" }
-brocallie-kotlin-multiplatform-shared = { id = "brocallie.kotlin.multiplatform.shared", version = "unspecified" }
-brocallie-core-designsystem = { id = "brocallie.core.designsystem", version = "unspecified" }
+brocallie-android-application-compose = { id = "brocallie.android.application.compose" }
+brocallie-compose-multiplatform-shared = { id = "brocallie.compose.multiplatform.shared" }
+brocallie-kotlin-multiplatform-shared = { id = "brocallie.kotlin.multiplatform.shared" }
+brocallie-core-designsystem = { id = "brocallie.core.designsystem" }
 
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
