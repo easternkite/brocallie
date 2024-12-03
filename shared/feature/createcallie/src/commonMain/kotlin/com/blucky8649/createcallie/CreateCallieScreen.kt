@@ -48,10 +48,10 @@ import brocallie.shared.feature.createcallie.generated.resources.error_message
 import brocallie.shared.feature.createcallie.generated.resources.photo_ai
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_content
 import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
+import coil3.compose.AsyncImage
 import com.blucky8649.designsystem.BcText
 import com.blucky8649.designsystem.BcTopAppBar
 import com.blucky8649.room.BrocallieDatabase
-import com.preat.peekaboo.image.picker.toImageBitmap
 import compose.icons.TablerIcons
 import compose.icons.tablericons.Check
 import io.github.vinceglb.filekit.compose.rememberFilePickerLauncher
@@ -185,9 +185,10 @@ fun CreateCallieScreen(
                     modifier = Modifier.padding(5.dp)
                 )
             }
-            uiState.image.byteArray?.toImageBitmap()?.also {
-                Image(
-                    bitmap = it,
+
+            uiState.image.byteArray?.also {
+                AsyncImage(
+                    model = it,
                     modifier = circleModifier,
                     contentDescription = "selected image",
                     contentScale = ContentScale.Crop

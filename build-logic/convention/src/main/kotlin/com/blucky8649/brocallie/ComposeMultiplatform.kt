@@ -8,8 +8,13 @@ import org.jetbrains.compose.resources.ResourcesExtension
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 internal fun Project.configureComposeMultiplatform() {
+    val compose = ComposePlugin.Dependencies(this@configureComposeMultiplatform)
     extensions.configure<KotlinMultiplatformExtension> {
         sourceSets.apply {
+            getByName("desktopMain").dependencies {
+                implementation(compose.desktop.macos_arm64)
+            }
+
             androidMain.dependencies {
                 val ktorAndroid = libs.findLibrary("ktor-client-android").get()
                 implementation(ktorAndroid.get())
@@ -22,7 +27,6 @@ internal fun Project.configureComposeMultiplatform() {
             }
 
             commonMain.dependencies {
-                val compose = ComposePlugin.Dependencies(this@configureComposeMultiplatform)
                 implementation(compose.runtime)
                 implementation(compose.foundation)
                 implementation(compose.material3)

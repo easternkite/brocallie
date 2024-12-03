@@ -6,7 +6,7 @@ plugins {
 
 android {
     namespace = "com.blucky8649.brocallie"
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         applicationId = "com.blucky8649.brocallie"
         minSdk = 24

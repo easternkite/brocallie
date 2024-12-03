@@ -22,11 +22,24 @@ kotlin {
         }
     }
 
+    jvm("desktop")
+
     sourceSets {
+        val desktopMain by getting
+
         commonMain.dependencies {
             //put your multiplatform dependencies here
             api(projects.shared.core.ui)
             api(projects.shared.core.firebase)
         }
+        desktopMain.dependencies {
+            implementation(compose.desktop.macos_arm64)
+        }
+    }
+}
+
+compose.desktop {
+    application {
+        mainClass = "com.easternkite.eungabi.MainKt"
     }
 }

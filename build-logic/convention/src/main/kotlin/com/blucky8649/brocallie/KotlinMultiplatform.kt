@@ -4,6 +4,7 @@ import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.getByName
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 internal fun Project.configureKotlinMultiplatform() {
@@ -20,7 +21,7 @@ internal fun Project.configureKotlinMultiplatform() {
         iosX64()
         iosArm64()
         iosSimulatorArm64()
-
+        jvm("desktop")
         task("testClasses")
 
         sourceSets.apply {
