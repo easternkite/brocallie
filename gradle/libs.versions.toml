@@ -39,7 +39,7 @@ sqliteBundled = "2.5.0-alpha05"
 eungabi = "0.1.0-alpha01"
 urlencoder = "1.6.0"
 
-decompose = "3.0.0"
+decompose = "3.2.2"
 fileket = "0.8.7"
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
