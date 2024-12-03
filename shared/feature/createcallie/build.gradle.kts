@@ -22,6 +22,7 @@ kotlin {
     sourceSets.commonMain.dependencies {
         implementation(libs.peekaboo.ui)
         implementation(libs.peekaboo.image.picker)
+        implementation(libs.filekit.compose)
         implementation(libs.kotlinx.serialization.json)
         implementation(projects.shared.core.firebase)
         implementation(projects.shared.core.generativeAi)

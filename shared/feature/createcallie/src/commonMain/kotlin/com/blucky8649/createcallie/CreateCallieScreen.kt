@@ -51,11 +51,13 @@ import brocallie.shared.feature.createcallie.generated.resources.tooltip_title
 import com.blucky8649.designsystem.BcText
 import com.blucky8649.designsystem.BcTopAppBar
 import com.blucky8649.room.BrocallieDatabase
-import com.preat.peekaboo.image.picker.SelectionMode
-import com.preat.peekaboo.image.picker.rememberImagePickerLauncher
 import com.preat.peekaboo.image.picker.toImageBitmap
 import compose.icons.TablerIcons
 import compose.icons.tablericons.Check
+import io.github.vinceglb.filekit.compose.rememberFilePickerLauncher
+import io.github.vinceglb.filekit.core.PickerMode
+import io.github.vinceglb.filekit.core.PickerType
+import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.resources.vectorResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
@@ -115,14 +117,16 @@ fun CreateCallieScreen(
         val uiState by viewModel.uiState.collectAsState()
         var showErrorDialog by remember { mutableStateOf(false) }
         val scope = rememberCoroutineScope()
-        val picker = rememberImagePickerLauncher(
-            selectionMode = SelectionMode.Single,
-            scope = scope,
-            onResult = {
-                val byteArray = it.firstOrNull() ?: return@rememberImagePickerLauncher
+        val picker = rememberFilePickerLauncher(
+            type = PickerType.Image,
+            title = "Pick a image",
+            mode = PickerMode.Single
+        ) { file ->
+            scope.launch {
+                val byteArray = file?.readBytes() ?: return@launch
                 viewModel.setImage(byteArray)
             }
-        )
+        }
 
         LaunchedEffect(uiState.errorMessage) {
             showErrorDialog = uiState.errorMessage != null

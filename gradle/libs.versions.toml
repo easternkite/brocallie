@@ -22,7 +22,7 @@ buildKonfig = "0.15.2"
 kmpViewModel = "2.8.0"
 jetbrainsKotlinJvm = "2.0.0"
 navigation = "2.8.4"
-coil = "3.0.3"
+coil = "3.0.4"
 datetime = "0.6.0"
 serialization-json = "1.7.1"
 
@@ -40,7 +40,7 @@ eungabi = "0.1.0-alpha01"
 urlencoder = "1.6.0"
 
 decompose = "3.0.0"
-
+fileket = "0.8.7"
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqliteBundled" }
@@ -94,7 +94,7 @@ materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "ma
 coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 coil-compose-core = { module = "io.coil-kt.coil3:coil-compose-core", version.ref = "coil" }
-coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor", version.ref = "coil" }
+coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor2", version.ref = "coil" }
 
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin"}
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin"}
@@ -107,6 +107,7 @@ generativeAi = { module = "dev.shreyaspatil.generativeai:generativeai-google", v
 composeIcons-tablerIcons = { module = "br.com.devsrsouza.compose.icons:tabler-icons", version.ref = "composeIcons" }
 peekaboo-ui = { module = "io.github.onseok:peekaboo-ui", version.ref = "peekaboo" }
 peekaboo-image-picker = { module = "io.github.onseok:peekaboo-image-picker", version.ref = "peekaboo" }
+filekit-compose = { module = "io.github.vinceglb:filekit-compose", version.ref = "fileket"}
 
 # :build-logic
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "agp" }
