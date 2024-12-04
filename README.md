@@ -1,8 +1,8 @@
 ## Project Brocallie
-> Currently focusing on Android development. iOS support is coming soon!
+Our app leverages the cutting-edge capabilities of the Gemini model to revolutionize the creation of digital personas. By simply uploading an image, users can instantly generate a vibrant, lifelike persona. The app utilizes the Gemini API in two key ways:
 
-The main function of this app is to enable conversational interactions with AI using Generative AI technology.
+First, the Gemini model analyzes the uploaded photo to extract persona traits such as personality, speech style, age, and gender. This deep analysis ensures that each persona is not just a static image but a character with distinct and realistic attributes.
 
-This project is developed using Compose Multiplatform, aiming for a multi-module structure with a focus on Android's Dynamic Feature Modules (DFM).
+Second, these traits are seamlessly integrated into the persona's interactions. The Gemini model doesn't just define the persona—it embodies it, enabling direct communication with users as though the persona were a real individual. This dynamic interaction opens up a world of possibilities for creative storytelling, role-playing, and engaging with virtual characters.
 
-The architecture of Google's Now in Android app serves as a key inspiration, and the project is designed with potential expansion to platforms beyond Android and iOS in mind.
+In essence, our app transforms simple images into immersive, interactive experiences, allowing users to explore and unleash their imagination like never before.
