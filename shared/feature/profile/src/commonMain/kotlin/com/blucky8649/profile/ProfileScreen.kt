@@ -74,7 +74,7 @@ fun ProfileScreen(
             colors = TopAppBarDefaults
                 .centerAlignedTopAppBarColors()
                 .copy(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.4f),
+                    containerColor = MaterialTheme.colorScheme.primaryContainer.copy(alpha = 0.1f),
                     navigationIconContentColor = Color.White,
                     actionIconContentColor = Color.White
                 ),
