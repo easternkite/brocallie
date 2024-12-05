@@ -1,0 +1,9 @@
+## Android
+json_key_file("Path/to/the/json/secret/file") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("com.blucky8649.brocallie") # e.g. com.krausefx.app
+
+## iOS
+app_identifier("com.blucky8649.brocallie") # The bundle identifier of your app
+apple_id("blucky8649@gmail.com") # Your Apple Developer Portal username
+itc_team_id("127259381") # App Store Connect Team ID
+team_id("5BPT297B5D") # Developer Portal Team ID
