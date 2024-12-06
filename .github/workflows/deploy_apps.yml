@@ -40,9 +40,9 @@ jobs:
 
       - name: Generate Local Properties
         run: |
-          echo "GEMINI_KEY = ${KEY_GEMINI}" > local.properties
-          echo "PROMPT_ANALYZE = ${PROMPT_ANALYZE}" > local.properties
-          echo "MAKE_PERSONA = ${PROMPT_PERSONA}" > local.properties
+          echo "GEMINI_KEY = ${KEY_GEMINI}" >> local.properties
+          echo "PROMPT_ANALYZE = ${PROMPT_ANALYZE}" >> local.properties
+          echo "MAKE_PERSONA = ${PROMPT_PERSONA}" >> local.properties
 
       - name: Insert Google Service Json in Android
         working-directory: androidApp
