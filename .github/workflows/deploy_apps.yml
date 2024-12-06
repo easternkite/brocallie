@@ -60,10 +60,9 @@ jobs:
         run: echo "${KEYSTORE_BASE64}" | base64 -d > brocallie.keystore
 
       - name: Generate .env in fastlane
-        working-directory: fastlane
         run: |
-          echo "KEYSTORE_PATH = \"$(pwd)/brocallie.keystore\"" >> .env
-          echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> .env
+          echo "KEYSTORE_PATH = \"$(pwd)/brocallie.keystore\"" >> fastlane/.env
+          echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> fastlane/.env
 
       - name: Run Android lane
         run: |
