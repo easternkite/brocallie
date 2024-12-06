@@ -9,5 +9,7 @@ captures
 .kotlin
 local.properties
 xcuserdata
+fastlane/.env
 androidApp/google-services.json
+androidApp/service_account.json
 iosApp/iosApp/GoogleService-Info.plist
