@@ -62,7 +62,14 @@ end
 
 platform :ios do
   desc "build app"
-  lane :beta do
-    build_app(scheme: "iosApp")
+  lane :deploy_ios do
+    match(type: "appstore")
+    build_app(
+        scheme: "iosApp",
+        project: "iosApp/iosApp.xcodeproj",
+        clean: true,
+        configuration: "Debug",
+        output_name: "brocallie_release.ipa",
+    )
   end
 end
