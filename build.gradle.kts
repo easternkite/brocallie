@@ -13,3 +13,16 @@ plugins {
     alias(libs.plugins.serialization).apply(false)
     alias(libs.plugins.ksp).apply(false)
 }
+
+tasks.register("updateInfoPlist") {
+    val infoPlistFile = file("iosApp/iosApp/Info.plist")
+    val targetVersionName = libs.versions.versionName.get()
+    val targetVersionCode = libs.versions.versionCode.get()
+
+    providers.exec {
+        commandLine("plutil", "-replace", "CFBundleShortVersionString", "-string", targetVersionName, infoPlistFile.absolutePath)
+    }.result.get()
+    providers.exec {
+        commandLine("plutil", "-replace", "CFBundleVersion", "-string", targetVersionCode, infoPlistFile.absolutePath)
+    }.result.get()
+}
