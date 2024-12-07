@@ -1,4 +1,4 @@
-git_url("https://github.com/easternkite/brocallie_env")
+git_url("git@github.com:easternkite/brocallie_env.git")
 
 storage_mode("git")
 
