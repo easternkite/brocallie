@@ -17,6 +17,9 @@ jobs:
       KEY_GEMINI : ${{ secrets.KEY_GEMINI }}
       PROMPT_ANALYZE : ${{ secrets.PROMPT_ANALYZE }}
       PROMPT_PERSONA : ${{ secrets.PROMPT_PERSONA }}
+      APPLE_AUTH_KEY : ${{ secrets.APPLE_AUTH_KEY }}
+      APPLE_KEY_ID : ${{ secrets.APPLE_KEY_ID }}
+      APPLE_USER_ID : ${{ secrets.APPLE_USER_ID }}
 
     steps:
       - uses: actions/checkout@v4
