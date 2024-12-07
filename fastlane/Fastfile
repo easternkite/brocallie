@@ -73,6 +73,7 @@ platform :ios do
     )
     match(
         storage_mode: "git",
+        readonly: true,
         type: "appstore",
         git_basic_authorization: ENV["GIT_BASIC_AUTH_64"],
         keychain_name: ENV["KEYCHAIN_NAME"],
