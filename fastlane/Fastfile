@@ -63,13 +63,28 @@ end
 platform :ios do
   desc "build app"
   lane :deploy_ios do
-    match(type: "appstore")
-    build_app(
-        scheme: "iosApp",
-        project: "iosApp/iosApp.xcodeproj",
-        clean: true,
-        configuration: "Debug",
-        output_name: "brocallie_release.ipa",
+    create_keychain(
+        name: ENV["KEYCHAIN_NAME"],
+        password: ENV["KEYCHAIN_PASSWORD"],
+        timeout: 1800,
+        default_keychain: true,
+        unlock: true,
+        lock_when_sleeps: false
     )
+    match(
+        git_url: "https://github.com/easternkite/brocallie_env.git",
+        storage_mode: "git",
+        readonly: true,
+        type: "appstore",
+        keychain_name: ENV["KEYCHAIN_NAME"],
+        keychain_password: ENV["KEYCHAIN_PASSWORD"]
+    )
+#     build_app(
+#         scheme: "iosApp",
+#         project: "iosApp/iosApp.xcodeproj",
+#         clean: true,
+#         configuration: "Debug",
+#         output_name: "brocallie_release.ipa",
+#     )
   end
 end

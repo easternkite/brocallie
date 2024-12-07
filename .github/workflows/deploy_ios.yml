@@ -77,6 +77,8 @@ jobs:
       - name: Run Android lane
         run: |
           fastlane ios deploy_ios
+        env:
+          MATCH_PASSWORD : ${{ secrets.MATCH_PASSWORD }}
 
       - name: Cache gradle caches
         id: cache-gradle-save
