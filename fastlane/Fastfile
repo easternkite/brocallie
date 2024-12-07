@@ -79,12 +79,12 @@ platform :ios do
         keychain_name: ENV["KEYCHAIN_NAME"],
         keychain_password: ENV["KEYCHAIN_PASSWORD"]
     )
-#     build_app(
-#         scheme: "iosApp",
-#         project: "iosApp/iosApp.xcodeproj",
-#         clean: true,
-#         configuration: "Debug",
-#         output_name: "brocallie_release.ipa",
-#     )
+    build_app(
+        scheme: "iosApp",
+        project: "iosApp/iosApp.xcodeproj",
+        clean: true,
+        configuration: "Debug",
+        output_name: "brocallie_release.ipa",
+    )
   end
 end
