@@ -20,6 +20,8 @@ jobs:
       APPLE_AUTH_KEY : ${{ secrets.APPLE_AUTH_KEY }}
       APPLE_KEY_ID : ${{ secrets.APPLE_KEY_ID }}
       APPLE_USER_ID : ${{ secrets.APPLE_USER_ID }}
+      KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
+      KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v4
@@ -73,6 +75,8 @@ jobs:
         run: |
           echo "KEYSTORE_PATH = \"$(pwd)/brocallie.keystore\"" >> fastlane/.env
           echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> fastlane/.env
+          echo "KEYCHAIN_NAME = ${KEYCHAIN_NAME}" >> fastlane/.env
+          echo "KEYCHAIN_PASSWORD = ${KEYCHAIN_PASSWORD}" >> fastlane/.env
 
       - name: Run Android lane
         run: |
