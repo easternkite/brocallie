@@ -64,8 +64,8 @@ platform :ios do
   desc "build app"
   lane :deploy_ios do
     create_keychain(
-        name: ENV["KEYCHAIN_NAME"],
-        password: ENV["KEYCHAIN_PASSWORD"],
+        name: "temp",
+        password: "temp123",
         timeout: 1800,
         default_keychain: true,
         unlock: true,
@@ -76,8 +76,8 @@ platform :ios do
         storage_mode: "git",
         readonly: true,
         type: "appstore",
-        keychain_name: ENV["KEYCHAIN_NAME"],
-        keychain_password: ENV["KEYCHAIN_PASSWORD"]
+        keychain_name: "temp",
+        keychain_password: "temp123"
     )
 #     build_app(
 #         scheme: "iosApp",
