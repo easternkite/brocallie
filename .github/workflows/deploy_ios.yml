@@ -39,6 +39,11 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
+      - name: Configure Git Credentials
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
 
