@@ -73,11 +73,11 @@ platform :ios do
     )
     match(
         storage_mode: "git",
-        readonly: true,
         type: "appstore",
         git_basic_authorization: ENV["GIT_BASIC_AUTH_64"],
         keychain_name: ENV["KEYCHAIN_NAME"],
-        keychain_password: ENV["KEYCHAIN_PASSWORD"]
+        keychain_password: ENV["KEYCHAIN_PASSWORD"],
+        app_identifier: "com.blucky8649.brocallie"
     )
     build_app(
         scheme: "iosApp",
