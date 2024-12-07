@@ -75,8 +75,8 @@ jobs:
         run: |
           echo "KEYSTORE_PATH = \"$(pwd)/brocallie.keystore\"" >> fastlane/.env
           echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> fastlane/.env
-          echo "KEYCHAIN_NAME = ${KEYCHAIN_NAME}" >> fastlane/.env
-          echo "KEYCHAIN_PASSWORD = ${KEYCHAIN_PASSWORD}" >> fastlane/.env
+          echo "KEYCHAIN_NAME = \"${KEYCHAIN_NAME}\"" >> fastlane/.env
+          echo "KEYCHAIN_PASSWORD = \"${KEYCHAIN_PASSWORD}\"" >> fastlane/.env
 
       - name: Run Android lane
         run: |
