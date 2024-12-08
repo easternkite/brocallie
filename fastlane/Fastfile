@@ -97,12 +97,12 @@ platform :ios do
         app_identifier: "com.blucky8649.brocallie"
     )
 
-    build_app(
-        scheme: "iosApp",
-        project: "iosApp/iosApp.xcodeproj",
-        clean: true,
-        configuration: "Debug",
-        output_name: "brocallie_release.ipa",
-    )
+#     build_app(
+#         scheme: "iosApp",
+#         project: "iosApp/iosApp.xcodeproj",
+#         clean: true,
+#         configuration: "Debug",
+#         output_name: "brocallie_release.ipa",
+#     )
   end
 end
