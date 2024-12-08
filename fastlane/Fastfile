@@ -71,6 +71,22 @@ platform :ios do
         unlock: true,
         lock_when_sleeps: false
     )
+    sync_code_signing(
+        type: "appstore",
+        app_identifier: "com.blucky8649.brocallie",
+        git_basic_authorization: ENV["GIT_BASIC_AUTH_64"],
+        keychain_name: ENV["KEYCHAIN_NAME"],
+        keychain_password: ENV["KEYCHAIN_PASSWORD"],
+        readonly: true
+    )
+    sync_code_signing(
+      type: "development",
+       app_identifier: "com.blucky8649.brocallie",
+       git_basic_authorization: ENV["GIT_BASIC_AUTH_64"],
+       keychain_name: ENV["KEYCHAIN_NAME"],
+       keychain_password: ENV["KEYCHAIN_PASSWORD"],
+       readonly: true
+    )
     match(
         storage_mode: "git",
         readonly: true,
@@ -80,14 +96,7 @@ platform :ios do
         keychain_password: ENV["KEYCHAIN_PASSWORD"],
         app_identifier: "com.blucky8649.brocallie"
     )
-    sync_code_signing(
-        type: "appstore",
-        app_identifier: "com.blucky8649.brocallie",
-        git_basic_authorization: ENV["GIT_BASIC_AUTH_64"],
-        keychain_name: ENV["KEYCHAIN_NAME"],
-        keychain_password: ENV["KEYCHAIN_PASSWORD"],
-        readonly: true
-    )
+
     build_app(
         scheme: "iosApp",
         project: "iosApp/iosApp.xcodeproj",
