@@ -24,7 +24,6 @@ include(":shared:feature:createcallie")
 include(":shared:feature:conversation")
 
 include(":shared:core:generative-ai")
-include(":shared:core:tts")
 include(":shared:core:designsystem")
 include(":shared:core:room")
 include(":shared:core:firebase")
