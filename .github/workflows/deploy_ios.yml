@@ -85,6 +85,7 @@ jobs:
 
       - name: Run Android lane
         run: |
+          ./gradlew :shared:core:firebase:build
           fastlane ios deploy_ios
         env:
           MATCH_PASSWORD : ${{ secrets.MATCH_PASSWORD }}
