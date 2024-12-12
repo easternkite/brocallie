@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		011149152D0B27A90069681A /* StorageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011149142D0B279E0069681A /* StorageUploader.swift */; };
 		0155B9612C455E590090576A /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0155B9602C455E590090576A /* InfoPlist.xcstrings */; };
 		01E80A472CC55E33000C2F91 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 01E80A462CC55E33000C2F91 /* FirebaseStorage */; };
 		01FFB17A2C612C9C00E86542 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFB1792C612C9C00E86542 /* GoogleService-Info.plist */; };
@@ -30,6 +31,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		011149142D0B279E0069681A /* StorageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUploader.swift; sourceTree = "<group>"; };
 		0155B9602C455E590090576A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
 		01FFB1792C612C9C00E86542 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "iosApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				011149142D0B279E0069681A /* StorageUploader.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
 				7555FF8C242A565B00829871 /* Info.plist */,
@@ -209,6 +212,7 @@
 			files = (
 				2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */,
 				7555FF83242A565900829871 /* ContentView.swift in Sources */,
+				011149152D0B27A90069681A /* StorageUploader.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
