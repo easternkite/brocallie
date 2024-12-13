@@ -74,6 +74,14 @@ platform :ios do
         lock_when_sleeps: false
     })
 
+    app_store_connect_api_key(
+        key_id: ENV["KEY_ID"],
+        issuer_id: ENV["ISSUER_ID"],
+        key_filepath: ENV["KEY_FILE_PATH"],
+        duration: 1200, # optional (maximum 1200)
+        in_house: false # optional but may be required if using match/sigh
+    )
+
     sync_code_signing(
         type: "appstore",
         app_identifier: "com.blucky8649.brocallie",
@@ -99,14 +107,6 @@ platform :ios do
         keychain_name: ENV["KEYCHAIN_NAME"],
         keychain_password: ENV["KEYCHAIN_PASSWORD"],
         app_identifier: "com.blucky8649.brocallie"
-    )
-
-    app_store_connect_api_key(
-        key_id: ENV["KEY_ID"],
-        issuer_id: ENV["ISSUER_ID"],
-        key_filepath: ENV["KEY_FILE_PATH"],
-        duration: 1200, # optional (maximum 1200)
-        in_house: false # optional but may be required if using match/sigh
     )
 
     build_app(
