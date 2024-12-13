@@ -1,9 +1,9 @@
-name: Deploy apps to appstore
+name: Deploy ios App to appstore
 
 on:
   push:
-    branches:
-      - main
+    tags:
+      - '[0-9]+\.[0-9]+\.[0-9]+'
 
 jobs:
   build:
@@ -78,7 +78,7 @@ jobs:
           echo "ISSUER_ID = \"${APPLE_USER_ID}\"" >> fastlane/.env
           echo "HOOK_URL = \"${HOOK_URL}\"" >> fastlane/.env
 
-      - name: Run Android lane
+      - name: Run iOS lane
         run: |
           fastlane ios deploy_ios
         env:

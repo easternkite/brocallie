@@ -118,14 +118,14 @@ platform :ios do
     )
 
     deliver(
-        submit_for_review: false,
-        automatic_release: false,
+        submit_for_review: true,
+        automatic_release: true,
         force: true, # Skip HTMl report verification
         skip_metadata: true,
         skip_screenshots: true,
         skip_binary_upload: true,
         precheck_include_in_app_purchases: false
-      )
+    )
 
     slack(
         username: "[Bot]Brocallie",

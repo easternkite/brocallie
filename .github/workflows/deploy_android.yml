@@ -1,4 +1,4 @@
-name: Deploy apps to appstore
+name: Deploy Android app to playStore
 
 on:
   push:
