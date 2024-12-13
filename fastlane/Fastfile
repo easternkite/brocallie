@@ -99,12 +99,37 @@ platform :ios do
         app_identifier: "com.blucky8649.brocallie"
     )
 
+    app_store_connect_api_key(
+        key_id: ENV["KEY_ID"],
+        issuer_id: ENV["ISSUER_ID"],
+        key_filepath: ENV["KEY_FILE_PATH"],
+        duration: 1200, # optional (maximum 1200)
+        in_house: false # optional but may be required if using match/sigh
+    )
+
     build_app(
         scheme: "iosApp",
         project: "iosApp/iosApp.xcodeproj",
         clean: true,
-        configuration: "Debug",
+        configuration: "Release",
         output_name: "brocallie_release.ipa",
+    )
+
+    deliver(
+        submit_for_review: false,
+        automatic_release: false,
+        force: true, # Skip HTMl report verification
+        skip_metadata: true,
+        skip_screenshots: true,
+        skip_binary_upload: true
+      )
+
+    slack(
+        username: "[Bot]Brocallie",
+        message: "Brocallie Test Flight 업로드 성공",
+        icon_url: "https://play-lh.googleusercontent.com/nsjPtqj6NFafABkEfBXm6L0NRRCeJ808K_VESa-z79l3s-h_QM0jidFOFkzw5GTjj3o=s96-rw",
+        slack_url: ENV["HOOK_URL"],
+        fail_on_error: true
     )
   end
 end

@@ -23,6 +23,7 @@ jobs:
       KEYCHAIN_NAME: ${{ secrets.KEYCHAIN_NAME }}
       KEYCHAIN_PASSWORD: ${{ secrets.KEYCHAIN_PASSWORD }}
       GIT_BASIC_AUTH_64: ${{ secrets.GIT_BASIC_AUTH_64 }}
+      HOOK_URL: ${{ secrets.HOOK_URL }}
 
     steps:
       - uses: actions/checkout@v4
@@ -60,28 +61,22 @@ jobs:
           echo "PROMPT_ANALYZE = ${PROMPT_ANALYZE}" >> local.properties
           echo "MAKE_PERSONA = ${PROMPT_PERSONA}" >> local.properties
 
-      - name: Insert Google Service Json in Android
-        working-directory: androidApp
-        run: echo "${SERVICE_ANDROID}" >> google-services.json
-
-      - name: Insert Service Account in Android
-        working-directory: androidApp
-        run: echo "${SERVICE_ACCOUNT}" >> service_account.json
-
       - name: Insert Google Service Plist in iOS
         working-directory: iosApp/iosApp
         run: echo "${SERVICE_IOS}" >> GoogleService-Info.plist
 
-      - name: Insert Keystore
-        run: echo "${KEYSTORE_BASE64}" | base64 -d > brocallie.keystore
+      - name: Insert Apple Key File
+        run: echo "${APPLE_AUTH_KEY}" > brocallie_auth.p8
 
       - name: Generate .env in fastlane
         run: |
-          echo "KEYSTORE_PATH = \"$(pwd)/brocallie.keystore\"" >> fastlane/.env
-          echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> fastlane/.env
           echo "KEYCHAIN_NAME = \"${KEYCHAIN_NAME}\"" >> fastlane/.env
           echo "KEYCHAIN_PASSWORD = \"${KEYCHAIN_PASSWORD}\"" >> fastlane/.env
           echo "GIT_BASIC_AUTH_64 = \"${GIT_BASIC_AUTH_64}\"" >> fastlane/.env
+          echo "KEY_FILE_PATH = \"$(pwd)/brocallie_auth.p8\"" >> fastlane/.env
+          echo "KEY_ID = \"${APPLE_KEY_ID}\"" >> fastlane/.env
+          echo "ISSUER_ID = \"${APPLE_USER_ID}\"" >> fastlane/.env
+          echo "HOOK_URL = \"${HOOK_URL}\"" >> fastlane/.env
 
       - name: Run Android lane
         run: |
