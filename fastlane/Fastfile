@@ -63,6 +63,8 @@ end
 platform :ios do
   desc "build app"
   lane :deploy_ios do
+    ENV["FASTLANE_XCODEBUILD_SETTINGS_TIMEOUT"] = "120"
+
     create_keychain({
         name: ENV["KEYCHAIN_NAME"],
         password: ENV["KEYCHAIN_PASSWORD"],
