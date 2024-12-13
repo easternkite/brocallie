@@ -57,6 +57,14 @@ platform :android do
         }
     )
     upload_to_play_store
+
+    slack(
+        username: "[Bot]Brocallie",
+        message: "[Android] Brocallie PlayStore 업로드 성공 😎",
+        icon_url: "https://play-lh.googleusercontent.com/nsjPtqj6NFafABkEfBXm6L0NRRCeJ808K_VESa-z79l3s-h_QM0jidFOFkzw5GTjj3o=s96-rw",
+        slack_url: ENV["HOOK_URL"],
+        fail_on_error: true
+    )
   end
 end
 
@@ -129,7 +137,7 @@ platform :ios do
 
     slack(
         username: "[Bot]Brocallie",
-        message: "Brocallie Test Flight 업로드 성공",
+        message: "[iOS] Brocallie AppStore 업로드 성공 😎",
         icon_url: "https://play-lh.googleusercontent.com/nsjPtqj6NFafABkEfBXm6L0NRRCeJ808K_VESa-z79l3s-h_QM0jidFOFkzw5GTjj3o=s96-rw",
         slack_url: ENV["HOOK_URL"],
         fail_on_error: true

@@ -22,6 +22,7 @@ jobs:
       APPLE_USER_ID : ${{ secrets.APPLE_USER_ID }}
       KEYCHAIN_NAME : ${{ secrets.KEYCHAIN_NAME }}
       KEYCHAIN_PASSWORD : ${{ secrets.KEYCHAIN_PASSWORD }}
+      HOOK_URL: ${{ secrets.HOOK_URL }}
 
     steps:
       - uses: actions/checkout@v4
@@ -71,6 +72,7 @@ jobs:
           echo "${ENV_KEYSTORE_WITHOUT_PATH}" >> fastlane/.env
           echo "KEYCHAIN_NAME = ${KEYCHAIN_NAME}" >> fastlane/.env
           echo "KEYCHAIN_PASSWORD = ${KEYCHAIN_PASSWORD}" >> fastlane/.env
+          echo "HOOK_URL = \"${HOOK_URL}\"" >> fastlane/.env
 
       - name: Run Android lane
         run: |
