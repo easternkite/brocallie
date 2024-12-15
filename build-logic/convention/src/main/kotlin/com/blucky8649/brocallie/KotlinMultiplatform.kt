@@ -30,6 +30,8 @@ internal fun Project.configureKotlinMultiplatform() {
                 implementation(koinAndroid)
                 val koinAndroidxCompose = libs.findLibrary("koin-android-compose").get()
                 implementation(koinAndroidxCompose)
+                val coroutinesAndroid = libs.findLibrary("kotlinx-coroutines-android").get()
+                implementation(coroutinesAndroid)
             }
 
             commonMain.dependencies {
@@ -41,6 +43,8 @@ internal fun Project.configureKotlinMultiplatform() {
                 implementation(datetime)
                 val serializationJson = libs.findLibrary("kotlinx-serialization-json").get()
                 implementation(serializationJson)
+                val coroutinesCore = libs.findLibrary("kotlinx-coroutines-core").get()
+                implementation(coroutinesCore)
             }
 
             commonTest.dependencies {

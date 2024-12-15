@@ -10,6 +10,7 @@ androidTools = "31.5.0"
 firebaseBom = "33.1.2"
 googleCloudTexttospeech = "2.0.1"
 kotlin = "2.1.0"
+coroutines = "1.9.0"
 compose = "1.5.4"
 compose-compiler = "1.5.4"
 compose-material3 = "1.1.2"
@@ -57,6 +58,8 @@ androidx-activity-compose = { module = "androidx.activity:activity-compose", ver
 
 kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.ref = "datetime"}
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json"}
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
+kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
