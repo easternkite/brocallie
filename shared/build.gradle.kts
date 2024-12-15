@@ -40,6 +40,6 @@ kotlin {
 
 compose.desktop {
     application {
-        mainClass = "com.easternkite.eungabi.MainKt"
+        mainClass = "com.blucky8649.brocallie.MainKt"
     }
 }
