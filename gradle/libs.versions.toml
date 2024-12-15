@@ -44,6 +44,7 @@ sqliteBundled = "2.5.0-alpha05"
 
 eungabi = "0.3.1"
 urlencoder = "1.6.0"
+napier = "2.7.1"
 
 decompose = "3.0.0"
 fileket = "0.8.7"
@@ -60,6 +61,7 @@ kotlinx-datetime = { module = "org.jetbrains.kotlinx:kotlinx-datetime", version.
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization-json"}
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-coroutines-desktop = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "coroutines" }
 
 androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
@@ -85,6 +87,7 @@ androidx-room-gradle-plugin = { module = "androidx.room:room-gradle-plugin", ver
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-cio = { module = "io.ktor:ktor-client-cio", version.ref = "ktor" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
 ktor-client-json = { module = "io.ktor:ktor-client-json", version.ref = "ktor" }
 ktor-client-serialization = { module = "io.ktor:ktor-client-serialization", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
@@ -98,6 +101,7 @@ eungabi = { module = "io.github.easternkite:eungabi", version.ref = "eungabi"}
 urlencoder = { module = "net.thauvin.erik.urlencoder:urlencoder-lib", version.ref = "urlencoder"}
 
 materialKolor = { module = "com.materialkolor:material-kolor", version.ref = "materialKolor" }
+napier = { module = "io.github.aakira:napier", version.ref = "napier"}
 
 coil-core = { module = "io.coil-kt.coil3:coil", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
