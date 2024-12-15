@@ -45,6 +45,8 @@ internal fun Project.configureKotlinMultiplatform() {
                 implementation(serializationJson)
                 val coroutinesCore = libs.findLibrary("kotlinx-coroutines-core").get()
                 implementation(coroutinesCore)
+                val napier = libs.findLibrary("napier").get()
+                implementation(napier)
             }
 
             commonTest.dependencies {
@@ -52,6 +54,13 @@ internal fun Project.configureKotlinMultiplatform() {
                 implementation(koinTest)
                 val test = libs.findLibrary("kotlin-test").get()
                 implementation(test)
+            }
+
+            getByName("desktopMain") {
+                dependencies {
+                    val coroutinesDesktop = libs.findLibrary("kotlinx-coroutines-desktop").get()
+                    implementation(coroutinesDesktop)
+                }
             }
         }
     }
