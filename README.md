@@ -13,5 +13,5 @@ In essence, our app transforms simple images into immersive, interactive experie
 ## Supported Platform
 * Android
 * iOS
-* DESKTOP
+* Desktop
 
