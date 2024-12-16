@@ -53,7 +53,11 @@ class CreateCallieViewModel(
                 image(image)
             }
             val response = kotlin.runCatching { chat.sendMessage(content) }
-                .onFailure { _uiState.update { it.copy(errorMessage = errorMessage ?: it.errorMessage, isLoading = false) } }
+                .onFailure {
+                    println("error occurred creating callie = ${it}")
+                    it.printStackTrace()
+                    _uiState.update { it.copy(errorMessage = errorMessage ?: it.errorMessage, isLoading = false) }
+                }
                 .getOrNull()?.text
 
             if (response == null) {

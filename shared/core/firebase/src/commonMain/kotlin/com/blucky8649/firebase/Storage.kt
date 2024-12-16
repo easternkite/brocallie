@@ -1,8 +1,8 @@
 package com.blucky8649.firebase
 
-const val BUCKET_URL = "gs://brocallie.appspot.com"
+const val BASE_URL = "https://firebasestorage.googleapis.com/v0"
 
-expect fun ByteArray.uploadImage(
+expect suspend fun ByteArray.uploadImage(
     imageName: String,
     completion: (String?) -> Unit
 )

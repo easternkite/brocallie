@@ -18,7 +18,7 @@ object IOSUploader {
     var listener: StorageUploader? = null
 }
 
-actual fun ByteArray.uploadImage(
+actual suspend fun ByteArray.uploadImage(
     imageName: String,
     completion: (url: String?) -> Unit
 ) {
