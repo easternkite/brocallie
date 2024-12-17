@@ -126,11 +126,19 @@ platform :ios do
     )
 
     deliver(
+        app_identifier: "com.bluck8649.brocallie"
+        submit_for_review: true,
+        automatic_release: true,
         force: true, # Skip HTMl report verification
-        skip_metadata: true,
-        skip_screenshots: true,
-        skip_binary_upload: true,
-        precheck_include_in_app_purchases: false
+        skip_metadata: false,
+        matadata_path: "./metadata",
+        skip_screenshots: false,
+        screenshots_path: "./screenshots",
+        overwrite_screenshots: false,
+        precheck_include_in_app_purchases: false,
+        release_notes: {
+            'en-US' => File.read('./metadata/en-US/release_notes.txt')
+        }
     )
 
     slack(
