@@ -1,3 +1,5 @@
 <resources>
     <string name = "feature_contact_title"> Contacts </string>
+    <string name = "message_callie_deleted"> Callie has been successfully removed. </string>
+    <string name = "undo"> Undo </string>
 </resources>

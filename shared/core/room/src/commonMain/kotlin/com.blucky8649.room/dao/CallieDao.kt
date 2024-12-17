@@ -13,4 +13,7 @@ interface CallieDao {
 
     @Insert
     suspend fun insertCallie(callieEntity: CallieEntity)
+
+    @Query("DELETE FROM callies WHERE id = :id")
+    suspend fun deleteCallie(id: Long)
 }

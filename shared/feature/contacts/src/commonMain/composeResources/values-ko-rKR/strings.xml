@@ -1,3 +1,5 @@
 <resources>
     <string name = "feature_contact_title"> 주소록 </string>
+    <string name = "message_callie_deleted"> 콜리가 성공적으로 삭제되었습니다. </string>
+    <string name = "undo"> 되돌리기 </string>
 </resources>
