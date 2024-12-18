@@ -47,7 +47,7 @@ urlencoder = "1.6.0"
 napier = "2.7.1"
 
 decompose = "3.0.0"
-fileket = "0.8.7"
+fileket = "0.8.8"
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
 androidx-sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqliteBundled" }
