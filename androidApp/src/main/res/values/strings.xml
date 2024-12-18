@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Brocallie</string>
     <string name="title_feature">Feature</string>
+
+    <string name="channel_ad">Ad News</string>
+    <string name="channel_chat">Chat</string>
 </resources>
