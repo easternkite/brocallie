@@ -46,7 +46,7 @@ eungabi = "0.3.1"
 urlencoder = "1.6.0"
 napier = "2.7.1"
 
-decompose = "3.0.0"
+decompose = "3.2.2"
 fileket = "0.8.8"
 [libraries]
 accompanist-systemuicontroller = { module = "com.google.accompanist:accompanist-systemuicontroller", version.ref = "accompanistSystemuicontroller" }
