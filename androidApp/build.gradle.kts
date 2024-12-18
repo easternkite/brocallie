@@ -38,6 +38,7 @@ dependencies {
     implementation(libs.eungabi)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.storage.ktx)
+    implementation(libs.firebase.messaging)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)

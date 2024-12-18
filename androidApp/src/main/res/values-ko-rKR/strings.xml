@@ -2,4 +2,7 @@
 <resources>
     <string name="app_name">브로콜리</string>
     <string name="title_feature">기능</string>
+
+    <string name="channel_ad">광고 알림</string>
+    <string name="channel_chat">대화 알림</string>
 </resources>
