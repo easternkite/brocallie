@@ -34,7 +34,7 @@ android {
 }
 
 dependencies {
-    api(projects.shared.core.ui)
+    implementation(projects.shared.core.ui)
     implementation(libs.eungabi)
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.storage.ktx)

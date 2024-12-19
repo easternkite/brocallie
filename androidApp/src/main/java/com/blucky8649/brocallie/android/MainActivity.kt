@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
         val channelAd = PushChannel(
             id = ID_CHANNEL_AD,
             name = getString(R.string.channel_ad),
-            importance = PushImportance.DEFAULT,
+            importance = PushImportance.HIGH,
         )
 
         val channelChat = PushChannel(

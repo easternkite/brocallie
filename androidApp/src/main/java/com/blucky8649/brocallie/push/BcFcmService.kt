@@ -37,13 +37,13 @@ class BcFcmService : FirebaseMessagingService() {
             .setColor(Color(0xFFC6FFDB).toArgb())
             .setContentTitle(pushMessage.title)
             .setContentText(pushMessage.body)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+            .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
 
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         NotificationManagerCompat.from(this).apply {
-            notificationManager.notify(0, messageBuilder.build())
+            notificationManager.notify(System.currentTimeMillis().toInt(), messageBuilder.build())
         }
     }
 
