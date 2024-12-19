@@ -81,4 +81,5 @@ fun Project.getActualNameSpaces() = projectDir
     .toString()
     .replace(rootDir.toString(), "")
     .replace("/", ".")
+    .replace("-", "")
     .let { "$DEFAULT_APPLICATION_ID$it" }
