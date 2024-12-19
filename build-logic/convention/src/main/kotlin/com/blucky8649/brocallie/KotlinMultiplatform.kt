@@ -4,9 +4,8 @@ import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getByName
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
-
+const val DEFAULT_APPLICATION_ID = "com.blucky8649.brocallie"
 internal fun Project.configureKotlinMultiplatform() {
 
     extensions.configure<KotlinMultiplatformExtension> {
@@ -66,7 +65,7 @@ internal fun Project.configureKotlinMultiplatform() {
     }
 
     extensions.configure<LibraryExtension> {
-        namespace = "com.blucky8649.brocallie"
+        namespace = getActualNameSpaces()
         compileSdk = 34
         defaultConfig {
             minSdk = 24
@@ -77,3 +76,9 @@ internal fun Project.configureKotlinMultiplatform() {
         }
     }
 }
+
+fun Project.getActualNameSpaces() = projectDir
+    .toString()
+    .replace(rootDir.toString(), "")
+    .replace("/", ".")
+    .let { "$DEFAULT_APPLICATION_ID$it" }
