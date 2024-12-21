@@ -39,6 +39,8 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.storage.ktx)
     implementation(libs.firebase.messaging)
+    implementation(libs.coil.core)
+    implementation(libs.coil.ktor)
 
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.navigation.compose)
