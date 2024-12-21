@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 54;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		011149152D0B27A90069681A /* StorageUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 011149142D0B279E0069681A /* StorageUploader.swift */; };
 		0155B9612C455E590090576A /* InfoPlist.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 0155B9602C455E590090576A /* InfoPlist.xcstrings */; };
+		01CDA9292D168CE8007C86E6 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 01CDA9282D168CE8007C86E6 /* FirebaseMessaging */; };
+		01CDA9322D16985A007C86E6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01CDA9312D16985A007C86E6 /* GoogleService-Info.plist */; };
 		01E80A472CC55E33000C2F91 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 01E80A462CC55E33000C2F91 /* FirebaseStorage */; };
-		01FFB17A2C612C9C00E86542 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 01FFB1792C612C9C00E86542 /* GoogleService-Info.plist */; };
 		058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557BA273AAA24004C7B11 /* Assets.xcassets */; };
 		058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */; };
 		2152FB042600AC8F00CF470E /* iOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2152FB032600AC8F00CF470E /* iOSApp.swift */; };
@@ -33,7 +34,8 @@
 /* Begin PBXFileReference section */
 		011149142D0B279E0069681A /* StorageUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageUploader.swift; sourceTree = "<group>"; };
 		0155B9602C455E590090576A /* InfoPlist.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = InfoPlist.xcstrings; sourceTree = "<group>"; };
-		01FFB1792C612C9C00E86542 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "iosApp/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		01CDA9232D168C4F007C86E6 /* iosApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = iosApp.entitlements; sourceTree = "<group>"; };
+		01CDA9312D16985A007C86E6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		058557BA273AAA24004C7B11 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		058557D8273AAEEB004C7B11 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		2152FB032600AC8F00CF470E /* iOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSApp.swift; sourceTree = "<group>"; };
@@ -42,11 +44,16 @@
 		7555FF8C242A565B00829871 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		01CDA9242D168C7D007C86E6 /* Push */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Push; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
 /* Begin PBXFrameworksBuildPhase section */
 		7555FF78242A565900829871 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CDA9292D168CE8007C86E6 /* FirebaseMessaging in Frameworks */,
 				01E80A472CC55E33000C2F91 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,7 +72,7 @@
 		7555FF72242A565900829871 = {
 			isa = PBXGroup;
 			children = (
-				01FFB1792C612C9C00E86542 /* GoogleService-Info.plist */,
+				01CDA9312D16985A007C86E6 /* GoogleService-Info.plist */,
 				0155B9602C455E590090576A /* InfoPlist.xcstrings */,
 				7555FF7D242A565900829871 /* iosApp */,
 				7555FF7C242A565900829871 /* Products */,
@@ -84,6 +91,8 @@
 		7555FF7D242A565900829871 /* iosApp */ = {
 			isa = PBXGroup;
 			children = (
+				01CDA9242D168C7D007C86E6 /* Push */,
+				01CDA9232D168C4F007C86E6 /* iosApp.entitlements */,
 				011149142D0B279E0069681A /* StorageUploader.swift */,
 				7555FF82242A565900829871 /* ContentView.swift */,
 				058557BA273AAA24004C7B11 /* Assets.xcassets */,
@@ -126,9 +135,13 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				01CDA9242D168C7D007C86E6 /* Push */,
+			);
 			name = iosApp;
 			packageProductDependencies = (
 				01E80A462CC55E33000C2F91 /* FirebaseStorage */,
+				01CDA9282D168CE8007C86E6 /* FirebaseMessaging */,
 			);
 			productName = iosApp;
 			productReference = 7555FF7B242A565900829871 /* iosApp.app */;
@@ -176,8 +189,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01CDA9322D16985A007C86E6 /* GoogleService-Info.plist in Resources */,
 				0155B9612C455E590090576A /* InfoPlist.xcstrings in Resources */,
-				01FFB17A2C612C9C00E86542 /* GoogleService-Info.plist in Resources */,
 				058557D9273AAEEB004C7B11 /* Preview Assets.xcassets in Resources */,
 				058557BB273AAA24004C7B11 /* Assets.xcassets in Resources */,
 			);
@@ -339,6 +352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: DONGYEON LEE (5BPT297B5D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -374,6 +388,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = iosApp/iosApp.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Distribution: DONGYEON LEE (5BPT297B5D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -440,6 +455,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		01CDA9282D168CE8007C86E6 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 01E80A452CC55E33000C2F91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		01E80A462CC55E33000C2F91 /* FirebaseStorage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 01E80A452CC55E33000C2F91 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -11,7 +11,7 @@ struct ComposeView: UIViewControllerRepresentable {
 }
 
 struct ContentView: View {
-
+    @StateObject private var notificationDelegate = BcNotificationDelegate()
 	var body: some View {
         ComposeView()
             .edgesIgnoringSafeArea(.all)
