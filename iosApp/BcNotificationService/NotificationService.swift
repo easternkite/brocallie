@@ -1,12 +1,5 @@
-//
-//  NotificationService.swift
-//  BcNotificationService
-//
-//  Created by 이동연 on 12/24/24.
-//  Copyright © 2024 orgName. All rights reserved.
-//
-
 import UserNotifications
+import FirebaseMessaging
 
 class NotificationService: UNNotificationServiceExtension {
 
@@ -18,9 +11,10 @@ class NotificationService: UNNotificationServiceExtension {
         bestAttemptContent = (request.content.mutableCopy() as? UNMutableNotificationContent)
         
         guard let content = bestAttemptContent else { return }
-        content.title = "\(content.title)"
         
-        contentHandler(content)
+        Messaging
+            .serviceExtension()
+            .populateNotificationContent(content, withContentHandler: contentHandler)
     }
     
     override func serviceExtensionTimeWillExpire() {
@@ -30,5 +24,5 @@ class NotificationService: UNNotificationServiceExtension {
             contentHandler(bestAttemptContent)
         }
     }
-
 }
+
