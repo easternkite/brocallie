@@ -10,7 +10,7 @@ android {
     defaultConfig {
         applicationId = "com.blucky8649.brocallie"
         minSdk = 24
-        targetSdk = 34
+        targetSdk = 35
         versionCode = libs.versions.versionCode.get().toInt()
         versionName = libs.versions.versionName.get()
     }
