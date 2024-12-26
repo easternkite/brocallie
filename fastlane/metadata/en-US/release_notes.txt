@@ -1,1 +1,1 @@
-Add Delete and undo feature. Now can remove callie just sliding to the left the row of the list.
+Add Push Notification.
