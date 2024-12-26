@@ -10,8 +10,8 @@ data class PushMessage(
 )
 
 fun RemoteMessage.toPushMessage() = PushMessage(
-    title = data["title"] ?: "EMPTY",
-    body = data["body"] ?: "EMPTY",
-    imageUrl = data["imageUrl"] ?: "",
-    channelId = data["channelId"] ?: ID_CHANNEL_AD.toString(),
+    title = notification?.title ?: "EMPTY",
+    body = notification?.body ?: "EMPTY",
+    imageUrl = notification?.imageUrl?.toString() ?: "",
+    channelId = notification?.channelId ?: ID_CHANNEL_AD.toString(),
 )
