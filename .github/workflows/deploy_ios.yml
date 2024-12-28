@@ -2,9 +2,10 @@ name: Deploy ios App to appstore
 
 on:
   push:
-    tags:
-      - '[0-9]+\.[0-9]+\.[0-9]+'
-
+    branches:
+      - main
+#    tags:
+#      - '[0-9]+\.[0-9]+\.[0-9]+'
 jobs:
   build:
     runs-on: macos-latest
