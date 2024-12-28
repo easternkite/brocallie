@@ -63,8 +63,8 @@ jobs:
           echo "MAKE_PERSONA = ${PROMPT_PERSONA}" >> local.properties
 
       - name: Insert Google Service Plist in iOS
-        working-directory: iosApp/iosApp
-        run: echo "${SERVICE_IOS}" >> iosApp/GoogleService-Info.plist
+        working-directory: iosApp
+        run: echo "${SERVICE_IOS}" >> GoogleService-Info.plist
 
       - name: Insert Apple Key File
         run: echo "${APPLE_AUTH_KEY}" > brocallie_auth.p8
