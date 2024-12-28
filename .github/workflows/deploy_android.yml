@@ -2,10 +2,8 @@ name: Deploy Android app to playStore
 
 on:
   push:
-    branches:
-      - main
-#    tags:
-#      - '[0-9]+\.[0-9]+\.[0-9]+'
+    tags:
+      - '[0-9]+\.[0-9]+\.[0-9]+'
 
 jobs:
   build:
