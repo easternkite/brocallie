@@ -79,9 +79,6 @@ jobs:
           echo "ISSUER_ID = \"${APPLE_USER_ID}\"" >> fastlane/.env
           echo "HOOK_URL = \"${HOOK_URL}\"" >> fastlane/.env
 
-      - name: Install fastlane
-        run: brew install fastlane
-
       - name: Run iOS lane
         run: |
           fastlane ios deploy_ios

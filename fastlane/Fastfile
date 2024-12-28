@@ -126,7 +126,7 @@ platform :ios do
     )
 
     deliver(
-        app_identifier: "com.bluck8649.brocallie",
+        app_identifier: "com.blucky8649.brocallie",
         submit_for_review: true,
         automatic_release: true,
         force: true, # Skip HTMl report verification
