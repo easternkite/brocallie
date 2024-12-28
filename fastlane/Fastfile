@@ -131,7 +131,7 @@ platform :ios do
         automatic_release: true,
         force: true, # Skip HTMl report verification
         skip_metadata: false,
-        matadata_path: "./metadata",
+        metadata_path: "./metadata",
         skip_screenshots: false,
         screenshots_path: "./screenshots",
         overwrite_screenshots: false,
