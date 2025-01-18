@@ -42,7 +42,7 @@ composeIcons = "1.1.1"
 androidxComposeBom = "2024.12.01"
 sqliteBundled = "2.5.0-alpha05"
 
-eungabi = "0.3.1"
+eungabi = "0.3.3"
 urlencoder = "1.6.0"
 napier = "2.7.1"
 
