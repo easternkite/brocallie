@@ -5,7 +5,7 @@
 * Android
 * iOS
 * Desktop
-
+***
 
 Our app leverages the cutting-edge capabilities of the Gemini model to revolutionize the creation of digital personas. By simply uploading an image, users can instantly generate a vibrant, lifelike persona. The app utilizes the Gemini API in two key ways:
 
