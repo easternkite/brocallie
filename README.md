@@ -2,8 +2,8 @@
 ![Hotpot 0](https://github.com/user-attachments/assets/3c8c34a1-78f5-4df2-badb-0b520ab2d65d)|![Hotpot 1](https://github.com/user-attachments/assets/f29a94c5-e5ee-4057-a248-29087cc5971b)|![ss0](https://github.com/user-attachments/assets/75cc84ec-cd33-4760-b279-f9d3b29b61da)|
 |------|---|---|
 ## Supported Platform
-* Android
-* iOS
+* [Android](https://play.google.com/store/apps/details?id=com.blucky8649.brocallie)
+* [iOS](https://apps.apple.com/in/app/brocallie/id6627345097?uo=2)
 * Desktop
 ***
 
