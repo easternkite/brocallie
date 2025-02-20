@@ -13,7 +13,7 @@ buildkonfig {
     packageName = "com.blucky8649.brocallie.shared.feature.createcallie"
 
     defaultConfigs {
-        val prompt = gradleLocalProperties(rootDir, providers).getProperty("PROMPT_ANALYZE")
+        val prompt = project.findProperty("PROMPT_ANALYZE") as String
         buildConfigField(FieldSpec.Type.STRING, "PROMPT_ANALYZE", prompt)
     }
 }

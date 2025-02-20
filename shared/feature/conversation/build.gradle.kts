@@ -12,7 +12,7 @@ buildkonfig {
     packageName = "com.blucky8649.brocallie.shared.feature.conversation"
 
     defaultConfigs {
-        val prompt = gradleLocalProperties(rootDir, providers).getProperty("MAKE_PERSONA")
+        val prompt = project.findProperty("MAKE_PERSONA") as String
         buildConfigField(FieldSpec.Type.STRING, "PROMPT_MAKE_PERSONA", prompt)
     }
 }
